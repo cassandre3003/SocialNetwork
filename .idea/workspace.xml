@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b111c818-7d2c-492b-9595-b3673563670e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workspace.iml" beforeDir="false" afterPath="$PROJECT_DIR$/workspace.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/InterpreteurTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/InterpreteurTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,12 +18,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Reader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
+            <state relative-caret-position="459">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1649#1650#0" expanded="true" />
-                <element signature="e#1681#1682#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -34,8 +30,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="17" />
+            <state relative-caret-position="353">
+              <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1402#1410#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -43,10 +43,57 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/InterpreteurTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+            <state relative-caret-position="208">
+              <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1324#1332#0" expanded="true" />
+                <element signature="e#1414#1422#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <folding>
+                <element signature="e#109#110#0" expanded="true" />
+                <element signature="e#139#140#0" expanded="true" />
+                <element signature="e#169#170#0" expanded="true" />
+                <element signature="e#195#196#0" expanded="true" />
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#263#264#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Lien.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#494#495#0" expanded="true" />
+                <element signature="e#526#527#0" expanded="true" />
+                <element signature="e#581#582#0" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
+                <element signature="e#484#485#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#545#546#0" expanded="true" />
+                <element signature="e#576#577#0" expanded="true" />
+                <element signature="e#603#604#0" expanded="true" />
+                <element signature="e#716#717#0" expanded="true" />
+                <element signature="e#752#753#0" expanded="true" />
+                <element signature="e#795#796#0" expanded="true" />
+                <element signature="e#831#832#0" expanded="true" />
+                <element signature="e#871#872#0" expanded="true" />
+                <element signature="e#903#904#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/fichier-donnees.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="52" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -64,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/ReaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="-208">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -105,9 +152,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/fichier-donnees.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/tmp.txt" />
         <option value="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/ReaderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Reader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Lien.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java" />
         <option value="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/InterpreteurTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Reader.java" />
       </list>
     </option>
   </component>
@@ -119,7 +168,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -178,6 +227,15 @@
               <item name="SocialNetwork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="SocialNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -230,7 +288,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557155128466" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557159282821" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -261,6 +319,22 @@
       <option name="PACKAGE_NAME" value="fr.ul.miage.SocialNetwork.file" />
       <option name="MAIN_CLASS_NAME" value="fr.ul.miage.SocialNetwork.file.InterpreteurTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InterpreteurTest.getLiensTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SocialNetwork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.ul.miage.SocialNetwork.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.ul.miage.SocialNetwork.file" />
+      <option name="MAIN_CLASS_NAME" value="fr.ul.miage.SocialNetwork.file.InterpreteurTest" />
+      <option name="METHOD_NAME" value="getLiensTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -312,29 +386,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReaderTest.ligneComplexeValideTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SocialNetwork" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.ul.miage.SocialNetwork.file.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.ul.miage.SocialNetwork.file" />
-      <option name="MAIN_CLASS_NAME" value="fr.ul.miage.SocialNetwork.file.ReaderTest" />
-      <option name="METHOD_NAME" value="ligneComplexeValideTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.InterpreteurTest" />
+        <item itemvalue="JUnit.InterpreteurTest.getLiensTest" />
         <item itemvalue="JUnit.InterpreteurTest.getNoeudATest" />
         <item itemvalue="JUnit.ReaderTest" />
         <item itemvalue="JUnit.ReaderTest.fichierValideTest" />
-        <item itemvalue="JUnit.ReaderTest.ligneComplexeValideTest" />
       </list>
     </recent_temporary>
   </component>
@@ -352,34 +410,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReaderTest_ligneComplexeValideTest - 2019.04.15 at 18h 22m 50s.xml">
-      <configuration name="ReaderTest.ligneComplexeValideTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReaderTest_fichierValideTest - 2019.04.15 at 18h 26m 29s.xml">
-      <configuration name="ReaderTest.fichierValideTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReaderTest_fichierValideTest - 2019.04.15 at 18h 36m 28s.xml">
-      <configuration name="ReaderTest.fichierValideTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReaderTest - 2019.04.15 at 18h 36m 33s.xml">
-      <configuration name="ReaderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReaderTest - 2019.04.16 at 09h 46m 20s.xml">
-      <configuration name="ReaderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReaderTest - 2019.04.16 at 09h 46m 53s.xml">
-      <configuration name="ReaderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="InterpreteurTest - 2019.04.16 at 10h 21m 15s.xml">
-      <configuration name="InterpreteurTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="InterpreteurTest_getNoeudATest - 2019.04.16 at 10h 21m 41s.xml">
-      <configuration name="InterpreteurTest.getNoeudATest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="InterpreteurTest - 2019.04.16 at 10h 26m 12s.xml">
       <configuration name="InterpreteurTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="InterpreteurTest - 2019.04.16 at 10h 26m 33s.xml">
+      <configuration name="InterpreteurTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 17h 46m 43s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 17h 47m 16s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 17h 47m 50s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 18h 09m 22s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 18h 10m 04s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 18h 11m 17s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest_getLiensTest - 2019.05.06 at 18h 11m 30s.xml">
+      <configuration name="InterpreteurTest.getLiensTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InterpreteurTest - 2019.05.06 at 18h 14m 11s.xml">
       <configuration name="InterpreteurTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -393,9 +451,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18176973" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1076759" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -531,19 +590,17 @@
     <entry file="file://G:/SeiyuuDanshiFinal-pc/game/saves/auto-10-LT1.save" />
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
+        <state relative-caret-position="459">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1649#1650#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/ReaderTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="-208">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -554,23 +611,70 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/fichier-donnees.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="52" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Lien.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#576#577#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#795#796#0" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="e#109#110#0" expanded="true" />
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#263#264#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="17" />
+        <state relative-caret-position="353">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1402#1410#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/InterpreteurTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        <state relative-caret-position="208">
+          <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1324#1332#0" expanded="true" />
+            <element signature="e#1414#1422#0" expanded="true" />
           </folding>
         </state>
       </provider>
