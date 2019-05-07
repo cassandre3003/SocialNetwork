@@ -52,15 +52,30 @@ public class Interpreteur {
         String liens = test[1];
 
         int finNom = liens.indexOf("[");
-        String type = liens.substring(0,finNom);
+        String type = liens.substring(0, finNom);
 
-        String[] attributs = liens.substring(finNom+1, liens.indexOf("]")).split(";");
+        String[] attributs = liens.substring(finNom + 1, liens.indexOf("]")).split(";");
         HashSet<String> attributsSet = new HashSet<String>(Arrays.asList(attributs));
         Noeud noeudA = this.getNoeudA();
         Noeud noeudB = this.getNoeudB();
 
-        Lien lien = new Lien(noeudA, noeudB, type, attributsSet);
+
+        Lien lien = new Lien(noeudA, noeudB, this.getSens(), type, attributsSet);
 
         return lien;
+    }
+
+    public String getSens(){
+        if (ligne.contains(">")){
+            return "AB";
+        }else if (ligne.contains("<")){
+            return "BA";
+        }else {
+            return "inexistante";
+        }
+    }
+
+    public void creerGraph(){
+
     }
 }

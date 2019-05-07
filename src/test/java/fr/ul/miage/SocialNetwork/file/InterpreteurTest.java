@@ -1,5 +1,6 @@
 package fr.ul.miage.SocialNetwork.file;
 
+import fr.ul.miage.SocialNetwork.graph.Noeud;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -32,7 +33,8 @@ public class InterpreteurTest {
         assertEquals("IDMC", interpreteurComplexe.getNoeudB().getNom());
     }
 
-    @Test void getLiensTest(){
+    @Test
+    void getLiensTest(){
         Interpreteur interpreteurSimple = new Interpreteur(LIGNESIMPLE);
         Interpreteur interpreteurComplexe = new Interpreteur(LIGNECOMPLEXE);
 
@@ -52,4 +54,6 @@ public class InterpreteurTest {
         assertEquals("employee", interpreteurComplexe.getLien().getType());
         assertEquals(complexe, interpreteurComplexe.getLien().getAttributs());
     }
+
+
 }
