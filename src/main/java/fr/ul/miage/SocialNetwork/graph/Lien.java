@@ -4,14 +4,52 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Lien {
-    private Noeud noeudA;  // Anna
-    private Noeud noeudB;  // Elsa
+    private String noeudA;  // Anna avec un id
+    private String noeudB;  // Elsa avec un id
+    private String id;
     private String direction; // (inexistante, AB, BA) --> A voir une énumération ?????
     private String type;   // siblings
     private HashSet<String> attributs; // since=2013
 
+    public Lien(String noeudA, String noeudB, String id, String direction, String type, HashSet<String> attributs) {
+        this.noeudA = noeudA;
+        this.noeudB = noeudB;
+        this.id = id;
+        this.direction = direction;
+        this.type = type;
+        this.attributs = attributs;
+    }
 
-    public Lien(Noeud noeudA, Noeud noeudB, String direction, String type, HashSet<String> attributs) {
+    public Lien(Lien lien, String id){
+        this.noeudA = lien.noeudA;
+        this.noeudB = lien.noeudB;
+        this.id = id;
+        this.direction = lien.direction;
+        this.type = lien.type;
+        this.attributs = lien.attributs;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Lien{" +
+                "noeudA='" + noeudA + '\'' +
+                ", noeudB='" + noeudB + '\'' +
+                ", id='" + id + '\'' +
+                ", direction='" + direction + '\'' +
+                ", type='" + type + '\'' +
+                ", attributs=" + attributs +
+                '}';
+    }
+
+    public Lien(String noeudA, String noeudB, String direction, String type, HashSet<String> attributs) {
         this.noeudA = noeudA;
         this.noeudB = noeudB;
         this.direction = direction;
@@ -33,11 +71,11 @@ public class Lien {
         this.attributs = attributs;
     }
 
-    public Noeud getNoeudA() {
+    public String getNoeudA() {
         return noeudA;
     }
 
-    public Noeud getNoeudB() {
+    public String getNoeudB() {
         return noeudB;
     }
 
@@ -46,11 +84,11 @@ public class Lien {
     }
 
 
-    public void setNoeudA(Noeud noeudA) {
+    public void setNoeudA(String noeudA) {
         this.noeudA = noeudA;
     }
 
-    public void setNoeudB(Noeud noeudB) {
+    public void setNoeudB(String noeudB) {
         this.noeudB = noeudB;
     }
 

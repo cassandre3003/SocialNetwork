@@ -30,7 +30,7 @@ public class Interpreteur {
 
     public Noeud getNoeudA(){
         int fin = ligne.indexOf("-");
-        return new Noeud(ligne.substring(0,fin));
+        return new Noeud(ligne.substring(0,fin), "0", new HashSet<String>());
 
     }
 
@@ -43,7 +43,7 @@ public class Interpreteur {
         }else {
             debut = ligne.lastIndexOf("-");
         }
-        return new Noeud(ligne.substring(debut+1));
+        return new Noeud(ligne.substring(debut+1), "0", new HashSet<String>());
     }
 
     public Lien getLien() {
@@ -60,7 +60,7 @@ public class Interpreteur {
         Noeud noeudB = this.getNoeudB();
 
 
-        Lien lien = new Lien(noeudA, noeudB, this.getSens(), type, attributsSet);
+        Lien lien = new Lien(noeudA.getId(), noeudB.getId(), this.getSens(), type, attributsSet);
 
         return lien;
     }
@@ -73,9 +73,5 @@ public class Interpreteur {
         }else {
             return "inexistante";
         }
-    }
-
-    public void creerGraph(){
-
     }
 }

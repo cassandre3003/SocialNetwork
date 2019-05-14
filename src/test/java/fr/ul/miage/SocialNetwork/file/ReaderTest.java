@@ -46,4 +46,16 @@ public class ReaderTest {
         Reader reader = new Reader();
         assertTrue(reader.fichierValide());
     }
+
+    @Test
+    void creerGraphLiensTest() throws IOException{
+        Reader reader = new Reader();
+        assertEquals(51, reader.creerGraph().getLiens().size());
+    }
+
+    @Test
+    void creerGraphNoeudTest() throws IOException{
+        Reader reader = new Reader();
+        assertEquals(21, reader.creerGraph().getNoeuds().size());
+    }
 }

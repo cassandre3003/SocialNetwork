@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 public class Graph {
     private HashSet<Lien> liens;
+    private HashSet<Noeud> noeuds;
 
     public Graph(HashSet<Lien> liens) {
         this.liens = liens;
@@ -18,6 +19,21 @@ public class Graph {
         this.liens = liens;
     }
 
+    public Graph(HashSet<Lien> liens, HashSet<Noeud> noeuds) {
+        this.liens = liens;
+        this.noeuds = noeuds;
+    }
+
+    public HashSet<Noeud> getNoeuds() {
+        return noeuds;
+    }
+
+    public void setNoeuds(HashSet<Noeud> noeuds) {
+        this.noeuds = noeuds;
+    }
+
+
+/*
     public HashSet<Noeud> getNoeuds(){
         HashSet<Noeud> noeuds = new HashSet<>();
         Iterator liensIt = liens.iterator();
@@ -34,15 +50,30 @@ public class Graph {
         }
         return noeuds;
     }
-
-    private boolean exist(HashSet<Noeud> noeuds, Noeud a) {
+*/
+    public boolean exist(Noeud a) {
         Iterator noeudsIt = noeuds.iterator();
-        while (noeudsIt.hasNext()){
+        while (noeudsIt.hasNext()) {
             Noeud tmp = (Noeud) noeudsIt.next();
-            if (tmp.getNom().equals(a.getNom())){
+            if (tmp.getNom().equals(a.getNom())) {
                 return true;
             }
         }
         return false;
     }
+
+    public Noeud getNoeudByNom(String nom){
+        Iterator noeudsIt = noeuds.iterator();
+        while (noeudsIt.hasNext()) {
+            Noeud tmp = (Noeud) noeudsIt.next();
+            if (tmp.getNom().equals(nom)) {
+                return tmp;
+            }
+        }
+        return null;
+    }
+
+
+
+
 }
