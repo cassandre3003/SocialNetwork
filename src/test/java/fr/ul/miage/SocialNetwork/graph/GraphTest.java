@@ -1,11 +1,7 @@
 package fr.ul.miage.SocialNetwork.graph;
 
-<<<<<<< HEAD
 import fr.ul.miage.SocialNetwork.file.Interpreteur;
 import fr.ul.miage.SocialNetwork.file.Reader;
-=======
-import fr.ul.miage.SocialNetwork.file.*;
->>>>>>> 156c18a477c56fea6a0a20567c2c465b6f62d94c
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
