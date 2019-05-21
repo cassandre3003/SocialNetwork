@@ -2,23 +2,21 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ul.miage.SocialNetwork.interfaceApp.ControllerAccueil">
    <children>
-      <TextArea layoutX="167.0" layoutY="24.0" prefHeight="39.0" prefWidth="200.0" />
-      <Text layoutX="47.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Noeud à chercher" />
+      <Text layoutX="47.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Noeud de départ" />
       <Text layoutX="119.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lien" />
       <Text layoutX="49.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de parcours" />
-      <ListView layoutX="167.0" layoutY="88.0" prefHeight="39.0" prefWidth="200.0" />
+      <ListView fx:id="lien" layoutX="167.0" layoutY="88.0" prefHeight="39.0" prefWidth="200.0" />
       <ScrollPane layoutX="167.0" layoutY="156.0" prefHeight="74.0" prefWidth="200.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="71.0" prefWidth="183.0" />
         </content>
       </ScrollPane>
+      <ListView fx:id="listeDeDepart" layoutX="167.0" layoutY="27.0" prefHeight="39.0" prefWidth="200.0" />
    </children>
 </Pane>
