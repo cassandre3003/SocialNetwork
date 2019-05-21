@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class Noeud {
     private String nom;
     private String id;
-    private HashSet<String> liens;
+    private HashSet<String> liens; // les ID des liens
 
     public String getId() {
         return id;
