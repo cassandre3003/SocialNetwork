@@ -1,6 +1,7 @@
 package fr.ul.miage.SocialNetwork.graph;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Noeud {
     private String nom;
@@ -43,4 +44,8 @@ public class Noeud {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+
+
+
 }
