@@ -74,7 +74,7 @@ public class Recherche {
     }
 
     public String rechercheParcoursProfondeurNoeud(Graph graph){ // Filtre le résultat de la recherche selon le parcours en profondeur
-        graph
+        return null;
     }
 
     public String rechercheParcoursLargeur(){return null;} // Filtre le résultat de la recherche selon le parcours en largeur
