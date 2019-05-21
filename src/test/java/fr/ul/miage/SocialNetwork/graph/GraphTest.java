@@ -1,8 +1,11 @@
 package fr.ul.miage.SocialNetwork.graph;
 
 import fr.ul.miage.SocialNetwork.file.Interpreteur;
+import fr.ul.miage.SocialNetwork.file.Reader;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,5 +36,13 @@ public class GraphTest {
         Graph graph = new Graph(liens,noeuds);
         assertEquals(7,graph.getNoeuds().size());
     }*/
+
+
+    @Test
+    public void getTypesLiensTest() throws IOException {
+        Reader reader = new Reader();
+        Graph graph = reader.creerGraph();
+        assertEquals(6,graph.getTypesLiens().size());
+    }
 
 }

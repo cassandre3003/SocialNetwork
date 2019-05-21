@@ -73,7 +73,17 @@ public class Graph {
         return null;
     }
 
-
+    public HashSet<String> getTypesLiens(){
+        Iterator liensIt = liens.iterator();
+        HashSet<String> types = new HashSet<String>();
+        while (liensIt.hasNext()) {
+            Lien tmp = (Lien) liensIt.next();
+            if (!types.contains(tmp.getType())){
+                types.add(tmp.getType());
+            }
+        }
+        return types;
+    }
 
 
 }
