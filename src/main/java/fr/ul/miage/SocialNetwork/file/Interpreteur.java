@@ -2,7 +2,7 @@ package fr.ul.miage.SocialNetwork.file;
 
 
 /*
-* Notre ligne est dÃ©jÃ  vÃ©rifiÃ©e... il ne peut pas y avoir d'erreur de construction
+* Notre ligne est déjà  vérifiée... il ne peut pas y avoir d'erreur de construction
 */
 
 import fr.ul.miage.SocialNetwork.graph.Lien;
