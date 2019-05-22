@@ -1,0 +1,7 @@
+
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(­‹“¶
+ysquid:UselessImportCheck"NRemove this unused import 'org.graphstream.graph.implementations.SingleGraph'.(”êù„8–”àİ­-
+dsquid:UselessImportCheck"9Remove this unused import 'javafx.embed.swing.SwingNode'.(çß‘8–”àİ­-
+fsquid:UselessImportCheck";Remove this unused import 'org.graphstream.ui.view.Viewer'.(‹›ŠÏ8–”àİ­-
+gsquid:UselessImportCheck"7Remove this unused import 'org.graphstream.graph.Node'.(Û‡µØşÿÿÿÿ8–”àİ­-
+esquid:UselessImportCheck"5Remove this unused import 'javafx.scene.layout.Pane'.(êÄƒÄşÿÿÿÿ8™ä¦İ­-
