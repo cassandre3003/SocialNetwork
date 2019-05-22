@@ -1,11 +1,13 @@
 package fr.ul.miage.SocialNetwork.recherche;
 
 import fr.ul.miage.SocialNetwork.file.Reader;
-import fr.ul.miage.SocialNetwork.graph.Graph;
-import fr.ul.miage.SocialNetwork.graph.Noeud;
+import fr.ul.miage.SocialNetwork.graph.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Stack;
 
 public class Recherche {
     // Critères de recherche
@@ -73,8 +75,39 @@ public class Recherche {
         return null;
     }
 
-    public String rechercheParcoursProfondeurNoeud(Graph graph){ // Filtre le résultat de la recherche selon le parcours en profondeur
-        return null;
+    public HashSet<String> rechercheParcoursProfondeurNoeud(Graph graph){ // Filtre le résultat de la recherche selon le parcours en profondeur
+        Stack<Lien> pileLiens = graph.getPileLiensByIdNoeud(noeudID); //création d'une pile pour voir si on est passé plusieurs fois sur un noeud
+        Lien lien;
+        HashSet<String> res = new HashSet<>();
+        while(!pileLiens.empty()){
+            lien = pileLiens.pop();
+            Noeud noeudVoisin = new Noeud();
+            if(lienValide(lien)){
+                if(!lien.getNoeudB().equals(noeudID)){
+                    res.add(graph.lien.getNoeudA());
+                    pileLiens.push()
+                }
+
+            }
+        }
+
+
+        return res;
+    }
+
+    public boolean lienValide(Lien lien){
+        if(lien.getNoeudB().equals(noeudID)){
+            if(direction.equals("AB")) {
+                return (lien.getType().equals(typeLien) && lien.getDirection().equals("BA"));
+            }
+            else if(direction.equals("BA")) {
+                return (lien.getType().equals(typeLien) && lien.getDirection().equals("AB"));
+            }
+            else{
+                return lien.getType().equals(typeLien) && lien.getDirection().equals(direction);
+            }
+        }
+        return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction));
     }
 
     public String rechercheParcoursLargeur(){return null;} // Filtre le résultat de la recherche selon le parcours en largeur
