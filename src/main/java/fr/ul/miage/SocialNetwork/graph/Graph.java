@@ -2,6 +2,7 @@ package fr.ul.miage.SocialNetwork.graph;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Stack;
 
 public class Graph {
     private HashSet<Lien> liens;
@@ -112,6 +113,36 @@ public boolean exist(Noeud a) {
             idLien = (String) liensIt.next();
             lien = getLienById(idLien);
             resultat.add(lien);
+        }
+        return resultat;
+    }
+
+    // liens par Noeud
+    public HashSet<Lien> getLiensByIdNoeud(String id){
+        Noeud noeud = getNoeudById(id);
+        String idLien;
+        Lien lien;
+        HashSet<Lien> resultat = new HashSet<Lien>();
+        Iterator liensIt = noeud.getLiens().iterator();
+        while (liensIt.hasNext()){
+            idLien = (String) liensIt.next();
+            lien = getLienById(idLien);
+            resultat.add(lien);
+        }
+        return resultat;
+    }
+
+    // liens par Noeud
+    public Stack<Lien> getPileLiensByIdNoeud(String id){
+        Noeud noeud = getNoeudById(id);
+        String idLien;
+        Lien lien;
+        Stack<Lien> resultat = new Stack();
+        Iterator liensIt = noeud.getLiens().iterator();
+        while (liensIt.hasNext()){
+            idLien = (String) liensIt.next();
+            lien = getLienById(idLien);
+            resultat.push(lien);
         }
         return resultat;
     }
