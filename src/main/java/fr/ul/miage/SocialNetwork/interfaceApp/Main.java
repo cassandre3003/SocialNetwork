@@ -17,6 +17,7 @@ public class Main extends Application {
         root = FXMLLoader.load(getClass().getResource("/Application.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Projet Génie Logiciel");
         primaryStage.show();
     }
 
