@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fc6c9095-f593-4a1a-bde8-48700fc459df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Application.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Application.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Application.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Application.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ul/miage/SocialNetwork/graph/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ul/miage/SocialNetwork/graph/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ul/miage/SocialNetwork/interfaceApp/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ul/miage/SocialNetwork/interfaceApp/Main.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,19 +21,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/Application.fxml">
-          <provider editor-type-id="text-editor" />
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="33" column="71" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
+            <state relative-caret-position="386">
+              <caret line="100" column="31" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3444#3452#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,8 +47,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+            <state relative-caret-position="323">
+              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#708#709#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,12 +60,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="106" column="46" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="46" />
+            <state relative-caret-position="438">
+              <caret line="149" column="5" selection-start-line="149" selection-start-column="5" selection-end-line="149" selection-end-column="5" />
               <folding>
                 <element signature="e#3215#3216#0" expanded="true" />
                 <element signature="e#3243#3244#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Lien.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -100,15 +127,16 @@
         <option value="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/graph/Graph.java" />
         <option value="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/graph/GraphTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/InterpreteurTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Graph.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Lien.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Reader.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fichier-donnees.txt" />
         <option value="$PROJECT_DIR$/src/test/java/fr/ul/miage/SocialNetwork/file/ReaderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Graph.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Application.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/Main.java" />
       </list>
     </option>
   </component>
@@ -217,6 +245,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.44264707" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
   </component>
   <component name="RunDashboard">
@@ -321,7 +350,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554710133992</updated>
-      <workItem from="1558516221866" duration="691000" />
+      <workItem from="1558516221866" duration="21922000" />
     </task>
     <task id="LOCAL-00001" summary="mise a jour de l'interface">
       <created>1558454610720</created>
@@ -330,7 +359,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558454610720</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="mise a jour de l'interface, affichage de l'unicité, et des modes de parcours">
+      <created>1558517119449</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558517119450</updated>
+    </task>
+    <task id="LOCAL-00003" summary="UPDATE de l'interface : ajout de tous les éléments de la recherche et mise en forme de l'interface">
+      <created>1558539980208</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1558539980208</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -366,9 +409,9 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8394000" />
+    <option name="totallyTimeSpent" value="29625000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -380,7 +423,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -392,16 +435,16 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3261105" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.32827735" />
       <window_info anchor="bottom" id="Thumbnails" order="7" weight="0.32932165" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49946696" weight="0.32827735" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32827735" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" weight="0.32827735" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" weight="0.32719395" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49840087" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49840087" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4989339" visible="true" weight="0.32719395" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -413,7 +456,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -421,26 +464,29 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Learn" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3261105" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
-      <window_info anchor="bottom" id="Thumbnails" order="7" weight="0.32932165" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32827735" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" weight="0.32827735" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32719395" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Find" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.49946696" visible="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.3997833" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.49946696" weight="0.32827735" />
+      <window_info anchor="bottom" id="Thumbnails" order="9" weight="0.32932165" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49840087" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49840087" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4989339" weight="0.32719395" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Maven" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +535,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mise a jour de l'interface" />
     <MESSAGE value="mise a jour de l'interface, possiblilté d'afficher les noms des utilisateurs" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise a jour de l'interface, possiblilté d'afficher les noms des utilisateurs" />
+    <MESSAGE value="mise a jour de l'interface, affichage de l'unicité, et des modes de parcours" />
+    <MESSAGE value="UPDATE de l'interface : ajout de tous les éléments de la recherche et mise en forme de l'interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="UPDATE de l'interface : ajout de tous les éléments de la recherche et mise en forme de l'interface" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -615,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/file/Interpreteur.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -642,16 +683,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fichier-donnees.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="27" column="9" selection-start-line="27" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hola.txt" />
     <entry file="file://$PROJECT_DIR$/workspace.iml">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fichier-donnees.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="294" column="26" selection-start-line="294" selection-start-column="26" selection-end-line="294" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Noeud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="149" column="5" selection-start-line="149" selection-start-column="5" selection-end-line="149" selection-end-column="5" />
+          <folding>
+            <element signature="e#3215#3216#0" expanded="true" />
+            <element signature="e#3243#3244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Lien.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -662,35 +728,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/graph/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="106" column="46" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="46" />
-          <folding>
-            <element signature="e#3215#3216#0" expanded="true" />
-            <element signature="e#3243#3244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="33" column="71" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
+        <state relative-caret-position="323">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#708#709#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Application.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/ul/miage/SocialNetwork/interfaceApp/ControllerAccueil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="100" column="31" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3444#3452#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
