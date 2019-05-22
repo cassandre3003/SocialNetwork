@@ -1,5 +1,10 @@
 package fr.ul.miage.SocialNetwork.interfacegraphe;
 
+import com.sun.javafx.geom.BaseBounds;
+import com.sun.javafx.geom.transform.BaseTransform;
+import com.sun.javafx.jmx.MXNodeAlgorithm;
+import com.sun.javafx.jmx.MXNodeAlgorithmContext;
+import com.sun.javafx.sg.prism.NGNode;
 import fr.ul.miage.SocialNetwork.file.Reader;
 import fr.ul.miage.SocialNetwork.graph.Graph;
 import fr.ul.miage.SocialNetwork.graph.Lien;
@@ -50,13 +55,21 @@ public class ControlerGraphe
 
         Noeud claude = cGraph.getNoeudByNom("Claude");
         Noeud pierre = cGraph.getNoeudByNom("Pierre");
-        Lien lien1 = cGraph.getLiens();
+        Lien lien1 = cGraph.getLienById("1");
 
+        graph.addNode(claude.getNom());
+        graph.addNode(pierre.getNom());
+        graph.addEdge(lien1.getAttributs().toString(), (org.graphstream.graph.Node) graph.getNode(claude.getNom()),graph.getNode(pierre.getNom()));
 
         //convertir graphe en streamGraphe : convertir nos noeuds en noeuds de la bibiolthèque streamgraphe
         Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
         fxGraph.setContent(viewer.addDefaultView(false));
         return fxGraph;
+
+    }
+
+
+    public static void main(String[] args) {
 
     }
 

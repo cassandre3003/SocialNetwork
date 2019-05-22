@@ -122,7 +122,7 @@ public boolean exist(Noeud a) {
         return false;
     }
 
-    private Lien getLienById(String id) {
+    public Lien getLienById(String id) {
         Iterator liensIt = liens.iterator();
         Lien tmp;
         while (liensIt.hasNext()) {
@@ -134,7 +134,7 @@ public boolean exist(Noeud a) {
         return null;
     }
 
-    private Noeud getNoeudById(String id) {
+    public Noeud getNoeudById(String id) {
         Iterator noeudIterator = noeuds.iterator();
         Noeud tmp;
         while (noeudIterator.hasNext()) {

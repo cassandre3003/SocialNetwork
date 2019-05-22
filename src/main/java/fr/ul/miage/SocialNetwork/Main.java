@@ -1,5 +1,8 @@
 package fr.ul.miage.SocialNetwork;
 
+import fr.ul.miage.SocialNetwork.file.Reader;
+import fr.ul.miage.SocialNetwork.graph.Graph;
+import fr.ul.miage.SocialNetwork.interfacegraphe.ControlerGraphe;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -19,7 +22,10 @@ public class Main extends Application
         StackPane pane = new StackPane();
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
-       // pane.getChildren().add(ControlerGraphe.getFXGraph(new Graph(new HashSet<>())));
+
+        Reader reader = new Reader();
+
+       pane.getChildren().add(ControlerGraphe.getFXGraph(reader.creerGraph()));
         primaryStage.show();
     }
 }
