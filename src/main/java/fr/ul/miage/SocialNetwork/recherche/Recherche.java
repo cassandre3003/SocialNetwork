@@ -66,6 +66,7 @@ public class Recherche {
         this.unicite = unicite;
     }
 
+
     public HashSet<Noeud> recherche() throws IOException { // Recherche général
         Reader read = new Reader();
         Graph graph = read.creerGraph();
@@ -77,21 +78,21 @@ public class Recherche {
 
     public HashSet<String> rechercheParcoursProfondeurNoeud(Graph graph){ // Filtre le résultat de la recherche selon le parcours en profondeur
         Stack<Lien> pileLiens = graph.getPileLiensByIdNoeud(noeudID); //création d'une pile pour voir si on est passé plusieurs fois sur un noeud
+        HashSet<String> idLienMarque = new HashSet<>();
         Lien lien;
+        Noeud noeudVoisin;
         HashSet<String> res = new HashSet<>();
-        while(!pileLiens.empty()){
-            lien = pileLiens.pop();
-            Noeud noeudVoisin = new Noeud();
-            if(lienValide(lien)){
-                if(!lien.getNoeudB().equals(noeudID)){
-                    res.add(graph.lien.getNoeudA());
-                    pileLiens.push()
+        while(!pileLiens.empty()){ // Tant que la pile n'est pas vide
+            lien = pileLiens.pop(); //On retire un lien de la pile
+            if(lienValide(lien) && !idLienMarque.contains(lien.getId())){ //Si le lien est valide
+                idLienMarque.add(lien.getId()); // Marquer le lien
+                if(!lien.getNoeudB().equals(noeudID)){ //Si le noeud n'est pas celui sur lequel on est
+                    noeudVoisin = graph.getNoeudById(lien.getNoeudB()); // prend le noeud voisin
+                    res.add(noeudVoisin.getNom());
+                    pileLiens.addAll(graph.getPileLiensByIdNoeud(lien.getNoeudB()));
                 }
-
             }
         }
-
-
         return res;
     }
 
