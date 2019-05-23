@@ -1,13 +1,11 @@
 package fr.ul.miage.SocialNetwork.recherche;
 
+import com.sun.org.apache.regexp.internal.RE;
 import fr.ul.miage.SocialNetwork.file.Reader;
 import fr.ul.miage.SocialNetwork.graph.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
 
 public class Recherche {
     // Critères de recherche
@@ -17,6 +15,15 @@ public class Recherche {
     private String direction;
     private int profondeur; //Si la profondeur est à 0, on fait tout l'arbre
     private String unicite;
+
+    public Recherche(String direction, String noeudID, String typeLien) {
+        this.direction = direction;
+        this.noeudID = noeudID;
+        this.typeLien= typeLien;
+    }
+
+    public Recherche() {
+    }
 
     public String getParcours() {
         return parcours;
@@ -67,26 +74,45 @@ public class Recherche {
     }
 
 
-    public HashSet<Noeud> recherche() throws IOException { // Recherche général
+    public HashSet<String> recherche() throws IOException { // Recherche général
+        HashSet<String> resultat = new HashSet<>();
         Reader read = new Reader();
         Graph graph = read.creerGraph();
-        rechercheParcoursProfondeurNoeud(graph);
-
-
-        return null;
+        if(profondeur == 0){
+            if(parcours.equals("Longueur d'abord")){
+                if(unicite.equals("NoeudGlobal")){
+                    resultat = rechercheParcoursProfondeurNoeud(graph);
+                }
+                else{
+                    resultat = rechercheParcoursProfondeurLien(graph);
+                }
+            }
+            else{
+                if(unicite.equals("NoeudGlobal")){
+                    resultat = rechercheParcoursLargeurNoeud(graph);
+                }
+                else{
+                    resultat = rechercheParcoursLargeurLien(graph);
+                }
+            }
+        }
+        else{
+            resultat = rechercheNiveauProfondeur();
+        }
+        return resultat;
     }
 
-    public HashSet<String> rechercheParcoursProfondeurNoeud(Graph graph){ // Filtre le résultat de la recherche selon le parcours en profondeur
+    public HashSet<String> rechercheParcoursProfondeurNoeud(Graph graph) { // Filtre le résultat de la recherche selon le parcours en profondeur où on ne peut passer qu'une seule fois par un même noeud
         Stack<Lien> pileLiens = graph.getPileLiensByIdNoeud(noeudID); //création d'une pile pour voir si on est passé plusieurs fois sur un noeud
         HashSet<String> idLienMarque = new HashSet<>();
         Lien lien;
         Noeud noeudVoisin;
         HashSet<String> res = new HashSet<>();
-        while(!pileLiens.empty()){ // Tant que la pile n'est pas vide
+        while (!pileLiens.empty()) { // Tant que la pile n'est pas vide
             lien = pileLiens.pop(); //On retire un lien de la pile
-            if(lienValide(lien) && !idLienMarque.contains(lien.getId())){ //Si le lien est valide
+            if (lienValide(lien) && !idLienMarque.contains(lien.getId())) { //Si le lien est valide
                 idLienMarque.add(lien.getId()); // Marquer le lien
-                if(!lien.getNoeudB().equals(noeudID)){ //Si le noeud n'est pas celui sur lequel on est
+                if (!lien.getNoeudB().equals(noeudID)) { //Si le noeud n'est pas celui sur lequel on est
                     noeudVoisin = graph.getNoeudById(lien.getNoeudB()); // prend le noeud voisin
                     res.add(noeudVoisin.getNom());
                     pileLiens.addAll(graph.getPileLiensByIdNoeud(lien.getNoeudB()));
@@ -95,6 +121,75 @@ public class Recherche {
         }
         return res;
     }
+
+    public HashSet<String> rechercheParcoursProfondeurLien(Graph graph){
+        HashSet<String> resultat = new HashSet<>();
+        ArrayList<String> idLienMarques = new ArrayList();
+        Stack<Noeud> pileNoeuds = new Stack();
+        HashSet<String> noeudsVoisin = new HashSet<>();
+        String idNoeudVoisin;
+        Lien lien;
+        pileNoeuds.push(graph.getNoeudById(noeudID));
+        while(!pileNoeuds.empty()){
+            Noeud noeud = pileNoeuds.pop();
+            if (!noeud.getId().equals(noeudID)){
+                resultat.add(noeud.getNom());
+            }
+            noeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques);
+            Iterator noeudsIt = noeudsVoisin.iterator();
+            while(noeudsIt.hasNext()){
+                idNoeudVoisin = (String)noeudsIt.next();
+                pileNoeuds.push(graph.getNoeudById(idNoeudVoisin));
+            }
+        }
+        return resultat;
+    }
+
+    public HashSet<String> rechercheParcoursLargeurNoeud(Graph graph) { // Filtre le résultat de la recherche selon le parcours en largeur où on ne peut passer q'une seule fois par un même noeud
+        LinkedList<Lien> fileLiens = graph.getFileLiensByIdNoeud(noeudID);
+        HashSet<String> idLienMarque = new HashSet<>();
+        Lien lien;
+        Noeud noeudVoisin;
+        HashSet<String> res = new HashSet<>();
+        while (!fileLiens.isEmpty()) { // Tant que la pile n'est pas vide
+            lien = fileLiens.pop(); //On retire un lien de la pile
+            if (lienValide(lien) && !idLienMarque.contains(lien.getId())) { //Si le lien est valide
+                idLienMarque.add(lien.getId()); // Marquer le lien
+                if (!lien.getNoeudB().equals(noeudID)) { //Si le noeud n'est pas celui sur lequel on est
+                    noeudVoisin = graph.getNoeudById(lien.getNoeudB()); // prend le noeud voisin
+                    res.add(noeudVoisin.getNom());
+                    fileLiens.addAll(graph.getFileLiensByIdNoeud(lien.getNoeudB()));
+                }
+            }
+        }
+        return res;
+    }
+
+    public HashSet<String> rechercheParcoursLargeurLien(Graph graph){
+        HashSet<String> resultat = new HashSet<>();
+        ArrayList<String> idLienMarques = new ArrayList();
+        LinkedList<Noeud> fileNoeuds = new LinkedList<>();
+        HashSet<String> noeudsVoisin = new HashSet<>();
+        String idNoeudVoisin;
+        Lien lien;
+        fileNoeuds.push(graph.getNoeudById(noeudID));
+        while(!fileNoeuds.isEmpty()){
+            Noeud noeud = fileNoeuds.pop();
+            if (!noeud.getId().equals(noeudID)){
+                resultat.add(noeud.getNom());
+            }
+            noeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques);
+            Iterator noeudsIt = noeudsVoisin.iterator();
+            while(noeudsIt.hasNext()){
+                idNoeudVoisin = (String)noeudsIt.next();
+                fileNoeuds.push(graph.getNoeudById(idNoeudVoisin));
+            }
+        }
+        return resultat;
+    }
+
+
+
 
     public boolean lienValide(Lien lien){
         if(lien.getNoeudB().equals(noeudID)){
@@ -111,18 +206,13 @@ public class Recherche {
         return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction));
     }
 
-    public String rechercheParcoursLargeur(){return null;} // Filtre le résultat de la recherche selon le parcours en largeur
 
-    public String rechercheNoeudID(){ return null;} //Filtre le résultat de la recherche général selon l'ID du Noeud
+    //Filtre le résultat de la recherche selon le numéro de la profondeur (à quel point...)
+    public HashSet<String> rechercheNiveauProfondeur(){
+        HashSet<String> resultat = new HashSet<>();
 
-    public String rechercheTypeLien(){return null;} //Filtre le résultat de la recherche général selon le type de lien (-> veut dire ami)
 
-    public String rechercheDirection(){return null;} //Filtre le résultat de la recherche général selon le sens du type (exemple: X -> Y ou x <- Y)
-
-    public String rechercheNiveauProfondeur(){ return null;} //Filtre le résultat de la recherche général selon le numéro de la profondeur (à quel point...)
-
-    public String RechercheUniciteLien(){ return null;} // Filtre le résultat de la recherche général selon le fait qu'on passe une fois ou autre sur un lien
-
-    public String RechercheUniciteNoeud(){ return null;} // Filtre le résultat de la recherche général selon le fait qu'on passe une fois ou plus dans un noeud
+        return resultat;
+    }
 
 }

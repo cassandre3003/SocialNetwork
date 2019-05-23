@@ -1,8 +1,8 @@
 package fr.ul.miage.SocialNetwork.graph;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Stack;
+import fr.ul.miage.SocialNetwork.recherche.Recherche;
+
+import java.util.*;
 
 public class Graph {
     private HashSet<Lien> liens;
@@ -132,7 +132,7 @@ public boolean exist(Noeud a) {
         return resultat;
     }
 
-    // liens par Noeud
+    // pile de liens par Noeud
     public Stack<Lien> getPileLiensByIdNoeud(String id){
         Noeud noeud = getNoeudById(id);
         String idLien;
@@ -143,6 +143,52 @@ public boolean exist(Noeud a) {
             idLien = (String) liensIt.next();
             lien = getLienById(idLien);
             resultat.push(lien);
+        }
+        return resultat;
+    }
+
+
+    // file de liens par Noeud
+    public LinkedList<Lien> getFileLiensByIdNoeud(String id){
+        Noeud noeud = getNoeudById(id);
+        String idLien;
+        Lien lien;
+        LinkedList<Lien> resultat = new LinkedList<Lien>();
+        Iterator liensIt = noeud.getLiens().iterator();
+        while (liensIt.hasNext()){
+            idLien = (String) liensIt.next();
+            lien = getLienById(idLien);
+            resultat.push(lien);
+        }
+        return resultat;
+    }
+
+    public HashSet<String> getNoeudsVoisinsById(Recherche recherche, ArrayList<String> liensMarques){
+        String idNoeud = recherche.getNoeudID();
+        HashSet<String> resultattmp = new HashSet<String>();
+        Noeud noeud = getNoeudById(idNoeud);
+        Lien lien;
+        HashSet<String> liens = noeud.getLiens();
+        String tmp;
+        Iterator it = liens.iterator();
+        while (it.hasNext()){
+            tmp = (String) it.next();
+            if (!liensMarques.contains(tmp)){
+                resultattmp.add(tmp);
+                liensMarques.add(tmp);
+            }
+        }
+        it = resultattmp.iterator();
+        HashSet<String> resultat = new HashSet<>();
+        while (it.hasNext()){
+            lien = getLienById((String) it.next());
+            if(recherche.lienValide(lien)){
+                if (lien.getNoeudA().equals(idNoeud)){
+                    resultat.add(lien.getNoeudB());
+                }else {
+                    resultat.add(lien.getNoeudA());
+                }
+            }
         }
         return resultat;
     }

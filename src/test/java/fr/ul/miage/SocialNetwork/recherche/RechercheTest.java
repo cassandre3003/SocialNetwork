@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RechercheTest {
 
@@ -18,7 +18,8 @@ public class RechercheTest {
         Recherche recherche = new Recherche();
         recherche.setDirection("AB");
         recherche.setTypeLien("friend");
-        Lien lien = new Lien("AB", "friend");
+        recherche.setNoeudID("1");
+        Lien lien = new Lien("1","2","AB", "friend");
         assertTrue(recherche.lienValide(lien));
     }
 
@@ -27,8 +28,9 @@ public class RechercheTest {
         Recherche recherche = new Recherche();
         recherche.setDirection("BA");
         recherche.setTypeLien("friend");
-        Lien lien = new Lien("AB", "friend");
-        assertTrue(recherche.lienValide(lien));
+        recherche.setNoeudID("1");
+        Lien lien = new Lien("1", "2","AB","friend");
+        assertFalse(recherche.lienValide(lien));
     }
 
     @Test
@@ -41,5 +43,45 @@ public class RechercheTest {
         recherche.setNoeudID(graphique.getNoeudByNom("Databases").getId());
         System.out.println(recherche.rechercheParcoursProfondeurNoeud(graphique).toString());
 
+    }
+
+    @Test
+    public void rechercheLargeurNoeudTest() throws IOException {
+        Recherche recherche = new Recherche();
+        Reader reader = new Reader();
+        Graph graphique = reader.creerGraph();
+        recherche.setTypeLien("teacher");
+        recherche.setDirection("AB");
+        recherche.setNoeudID(graphique.getNoeudByNom("Claude").getId());
+        System.out.println(recherche.rechercheParcoursLargeurNoeud(graphique).toString());
+    }
+
+    @Test
+    public void rechercheProfondeurLienTest() throws IOException {
+        Recherche recherche = new Recherche();
+        Reader reader = new Reader();
+        Graph graphique = reader.creerGraph();
+        recherche.setTypeLien("teacher");
+        recherche.setDirection("AB");
+        recherche.setNoeudID(graphique.getNoeudByNom("Claude").getId());
+        assertEquals(6,recherche.rechercheParcoursProfondeurLien(graphique).size());
+    }
+
+    @Test
+    public void rechercheLargeurLienTest() throws IOException {
+        Recherche recherche = new Recherche();
+        Reader reader = new Reader();
+        Graph graphique = reader.creerGraph();
+        recherche.setNoeudID(graphique.getNoeudByNom("Refactoring").getId());
+        recherche.setTypeLien("author");
+        recherche.setDirection("AB");
+        assertEquals(6,recherche.rechercheParcoursLargeurLien(graphique).size());
+    }
+
+    @Test
+    public void rechercheTest() throws IOException {
+        Recherche recherche = new Recherche();
+        Reader reader = new Reader();
+        Graph graphique = reader.creerGraph();
     }
 }

@@ -2,10 +2,12 @@ package fr.ul.miage.SocialNetwork.graph;
 
 import fr.ul.miage.SocialNetwork.file.Interpreteur;
 import fr.ul.miage.SocialNetwork.file.Reader;
+import fr.ul.miage.SocialNetwork.recherche.Recherche;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -59,7 +61,19 @@ public class GraphTest {
     public void getTypesLiensTest() throws IOException {
         Reader reader = new Reader();
         Graph graph = reader.creerGraph();
-        assertEquals(6,graph.getTypesLiens().size());
+        assertEquals(6, graph.getTypesLiens().size());
+    }
+
+    @Test
+    public void getNoeudsVoisinsById() throws IOException {
+        Reader reader = new Reader();
+        Graph graph = reader.creerGraph();
+        ArrayList<String> marques = new ArrayList<>();
+        marques.add("1");
+        Recherche recherche = new Recherche("AB","1","teacher");
+        // Le noeud avec l'id 1 possède a 7 liens en tout, dont 6 liens valides, mais comme le lien avec l'id 1 est marqué, alors on en 5
+        assertEquals(5,graph.getNoeudsVoisinsById(recherche, marques).size());
+        assertEquals(marques.size(), 7);
     }
 
 }
