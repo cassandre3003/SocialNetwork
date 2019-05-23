@@ -1,10 +1,8 @@
 package fr.ul.miage.SocialNetwork.graph;
 
-
 import fr.ul.miage.SocialNetwork.recherche.Recherche;
 
 import java.util.*;
-
 
 public class Graph {
     private HashSet<Lien> liens;
@@ -36,34 +34,34 @@ public class Graph {
     }
 
 
-/*
-    public HashSet<Noeud> getNoeuds(){
-        HashSet<Noeud> noeuds = new HashSet<>();
-        Iterator liensIt = liens.iterator();
-        while (liensIt.hasNext()){
-            Lien value = (Lien) liensIt.next();
-            Noeud A = value.getNoeudA();
-            Noeud B = value.getNoeudB();
-            if (!exist(noeuds,A)){
-                noeuds.add(A);
+    /*
+        public HashSet<Noeud> getNoeuds(){
+            HashSet<Noeud> noeuds = new HashSet<>();
+            Iterator liensIt = liens.iterator();
+            while (liensIt.hasNext()){
+                Lien value = (Lien) liensIt.next();
+                Noeud A = value.getNoeudA();
+                Noeud B = value.getNoeudB();
+                if (!exist(noeuds,A)){
+                    noeuds.add(A);
+                }
+                if (!exist(noeuds, B)){
+                    noeuds.add(B);
+                }
             }
-            if (!exist(noeuds, B)){
-                noeuds.add(B);
+            return noeuds;
+        }
+    */
+    public boolean exist(Noeud a) {
+        Iterator noeudsIt = noeuds.iterator();
+        while (noeudsIt.hasNext()) {
+            Noeud tmp = (Noeud) noeudsIt.next();
+            if (tmp.getNom().equals(a.getNom())) {
+                return true;
             }
         }
-        return noeuds;
+        return false;
     }
-*/
-public boolean exist(Noeud a) {
-    Iterator noeudsIt = noeuds.iterator();
-    while (noeudsIt.hasNext()) {
-        Noeud tmp = (Noeud) noeudsIt.next();
-        if (tmp.getNom().equals(a.getNom())) {
-            return true;
-        }
-    }
-    return false;
-}
 
     public Noeud getNoeudByNom(String nom){
         Iterator noeudsIt = noeuds.iterator();
@@ -148,6 +146,7 @@ public boolean exist(Noeud a) {
         }
         return resultat;
     }
+
 
     // file de liens par Noeud
     public LinkedList<Lien> getFileLiensByIdNoeud(String id){
