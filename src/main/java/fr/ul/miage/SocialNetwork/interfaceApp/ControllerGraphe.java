@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-public class ControllerAccueil implements Initializable {
+public class ControllerGraphe implements Initializable {
     @FXML
     private ComboBox lien;
     @FXML

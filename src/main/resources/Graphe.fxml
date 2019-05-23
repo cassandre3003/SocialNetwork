@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<TabPane prefHeight="694.0" prefWidth="922.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ul.miage.SocialNetwork.interfaceApp.ControllerAccueil">
+<TabPane prefHeight="694.0" prefWidth="922.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ul.miage.SocialNetwork.interfaceApp.ControllerGraphe">
   <tabs>
     <Tab text="Recherche">
       <content>
