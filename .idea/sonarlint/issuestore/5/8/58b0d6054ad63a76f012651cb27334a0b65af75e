@@ -1,7 +1,0 @@
-
-‰squid:S1319B"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(âŒ«Èıÿÿÿÿ
-ˆsquid:S1319"qThe type of the "attributs" object should be an interface such as "Set" rather than the implementation "HashSet".(İøÁ×
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Œº¢™şÿÿÿÿ
-squid:S1319F"qThe type of the "attributs" object should be an interface such as "Set" rather than the implementation "HashSet".(àñÍùşÿÿÿÿ
-Ssquid:UselessImportCheck"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ
-ˆsquid:S13194"qThe type of the "attributs" object should be an interface such as "Set" rather than the implementation "HashSet".(Ãã‡

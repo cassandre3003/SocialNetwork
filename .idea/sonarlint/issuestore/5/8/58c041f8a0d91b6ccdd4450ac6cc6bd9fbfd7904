@@ -1,16 +1,0 @@
-
-=squid:S1172y"&Remove these unused method parameters.(ëû†Ü
-„squid:S1319"mThe type of the "liens" object should be an interface such as "Set" rather than the implementation "HashSet".(è¤ºâ
-‰squid:S1319\"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(©„™–ÿÿÿÿÿ
-Ssquid:UnusedPrivateMethody".Remove this unused private "lienExist" method.(ëû†Ü
-Šsquid:S1319"nThe type of the "noeuds" object should be an interface such as "Set" rather than the implementation "HashSet".(˜û™­üÿÿÿÿ
-„squid:S1319N"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(ŒŞ’á
-‰squid:S1319"mThe type of the "liens" object should be an interface such as "Set" rather than the implementation "HashSet".(˜û™­üÿÿÿÿ
-‰squid:S1319"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(®á¯ıÿÿÿÿ
-…squid:S1319"nThe type of the "noeuds" object should be an interface such as "Set" rather than the implementation "HashSet".(¸Ö€ë
-\squid:UnusedPrivateMethod‰"1Remove this unused private "getNoeudById" method.(İ¤ãüÿÿÿÿ
-‰squid:S1319
-"mThe type of the "liens" object should be an interface such as "Set" rather than the implementation "HashSet".(ª¾Ÿéøÿÿÿÿ
-‰squid:S1319"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(ı¡ªûÿÿÿÿ
-‰squid:S1319k"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(ÚÉıÅüÿÿÿÿ
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Œº¢™şÿÿÿÿ
