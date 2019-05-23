@@ -1,5 +1,6 @@
 package fr.ul.miage.SocialNetwork.file;
 
+import fr.ul.miage.SocialNetwork.graph.Graph;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,6 +57,7 @@ public class ReaderTest {
     @Test
     void creerGraphNoeudTest() throws IOException{
         Reader reader = new Reader();
-        assertEquals(21, reader.creerGraph().getNoeuds().size());
+        Graph graph = reader.creerGraph();
+        assertEquals(21, graph.getNoeuds().size());
     }
 }

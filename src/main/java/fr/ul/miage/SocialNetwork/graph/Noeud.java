@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Noeud {
     private String nom;
     private String id;
-    private HashSet<String> liens;
+    private HashSet<String> liens; // les ID des liens
 
     public String getId() {
         return id;
@@ -22,6 +22,8 @@ public class Noeud {
         this.liens = liens;
     }
 
+    public Noeud() {
+    }
 
     public HashSet<String> getLiens() {
         return liens;
