@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class RechercheTest {
 
 
@@ -31,6 +32,7 @@ public class RechercheTest {
         recherche.setNoeudID("1");
         Lien lien = new Lien("1", "2","AB","friend");
         assertFalse(recherche.lienValide(lien));
+        assertTrue(recherche.lienValide(lien));
     }
 
     @Test
@@ -44,6 +46,7 @@ public class RechercheTest {
         System.out.println(recherche.rechercheParcoursProfondeurNoeud(graphique).toString());
 
     }
+
 
     @Test
     public void rechercheLargeurNoeudTest() throws IOException {
