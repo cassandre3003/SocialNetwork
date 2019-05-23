@@ -134,7 +134,7 @@ public boolean exist(Noeud a) {
     private boolean lienExist(HashSet<String> typesLiens, String tmp) {
         return false;
     }
-    
+
 
     public Lien getLienById(String id) {
         Iterator liensIt = liens.iterator();
