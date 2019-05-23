@@ -29,8 +29,19 @@ public class Recherche {
         this.typeLien= typeLien;
     }
 
-    public Recherche() {
+    public Recherche(String parcours,int profondeur, String unicite,String direction, String noeudID, String typeLien) {
+        this.direction = direction;
+        this.noeudID = noeudID;
+        this.typeLien= typeLien;
+        this.parcours = parcours;
+        this.profondeur = profondeur;
+        this.unicite = unicite;
     }
+
+    public Recherche() {
+
+    }
+
 
     public String getParcours() {
         return parcours;

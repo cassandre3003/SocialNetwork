@@ -2,6 +2,8 @@ package fr.ul.miage.SocialNetwork.interfaceApp;
 
 import fr.ul.miage.SocialNetwork.file.Reader;
 import fr.ul.miage.SocialNetwork.graph.Graph;
+import fr.ul.miage.SocialNetwork.graph.Noeud;
+import fr.ul.miage.SocialNetwork.recherche.Recherche;
 import javafx.beans.value.ChangeListener;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
@@ -22,13 +24,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class ControllerGraphe implements Initializable {
     @FXML
     private ComboBox lien;
+    @FXML
+    private ComboBox direction;
     @FXML
     private ComboBox listeDeDepart;
     @FXML
@@ -60,7 +64,8 @@ public class ControllerGraphe implements Initializable {
             parcours.getItems().addAll("Longueur d'abord", "Largeur d'abord");
             unicite.getItems().addAll("NoeudGlobal", "RelationGlobal");
             listeDeDepart.getItems().add("Choisir un nom");
-            level.getItems().add("0 (par défaut)");
+            level.getItems().add("0 (par defaut)");
+            direction.getItems().addAll("AB","BA", "inexistante");
 
             //ajout de l'intégralité des noms présents ds le fichier
             for (String str : graphe.getNomNoeuds()) {
@@ -71,7 +76,7 @@ public class ControllerGraphe implements Initializable {
              * ce nombre est obtenu à partir du nombre total de liens,
              * la profondeur ne pourra donc pas dépasser ce nombre
             */
-            for (int i=0; i< graphe.getLiens().size();i++){
+            for (int i=1; i< graphe.getLiens().size();i++){
                 level.getItems().add(i);
             }
             //affichage de l'option par défaut
@@ -79,6 +84,7 @@ public class ControllerGraphe implements Initializable {
             unicite.setValue(unicite.getItems().get(0));
             level.setValue(level.getItems().get(0));
             listeDeDepart.setValue(listeDeDepart.getItems().get(0));
+            direction.setValue(direction.getItems().get(2));
 
             listeDeDepart.valueProperty().addListener((ChangeListener<String>) (arg0, oldvalue, newvalue) -> {
                 lien.getItems().clear();
@@ -98,26 +104,41 @@ public class ControllerGraphe implements Initializable {
 
     @FXML
     public void search(ActionEvent e) throws IOException {
+        Reader reader = null; //pour lire le fichier
         try {
-            Reader reader = new Reader();
+            reader = new Reader();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        try {
             Graph graphe = reader.creerGraph();
+
             String lienRecupere = lien.getSelectionModel().getSelectedItem().toString();  //pour récupérer le lien
             String nomRecupere = listeDeDepart.getSelectionModel().getSelectedItem().toString();
+            String dirRecupere = direction.getSelectionModel().getSelectedItem().toString();
             String profondeurRecupere = level.getSelectionModel().getSelectedItem().toString();
+            int profondeur;
             String uniciteRecupere = unicite.getSelectionModel().getSelectedItem().toString();
             String parcoursRecupere = parcours.getSelectionModel().getSelectedItem().toString();
 
-            //à partir de la fonction de Ouaoua et Cassou
-            String [] elements = new String[] { "E", "F" };
-            HashSet<String> res = new HashSet<String>(Arrays.asList(elements));
-            String chaine ="";
-            for ( String str :  res){
-                chaine = chaine + str +"\n";
+            if (profondeurRecupere.equals("0 (par defaut)")) {
+                profondeur = 0;
+            } else {
+                profondeur = Integer.parseInt(profondeurRecupere);
+            }
+
+            Recherche recherche = new Recherche(parcoursRecupere, profondeur, uniciteRecupere, dirRecupere, graphe.getNoeudByNom(nomRecupere).getId(), lienRecupere);
+
+            HashSet<String> res = recherche.recherche();
+            Iterator resRequest = res.iterator();
+            String chaine="";
+            while (resRequest.hasNext()) {
+                chaine = chaine + resRequest.next()+ "\n";
             }
             resultat.setText(chaine);
-        }
-        catch (NullPointerException ex) {
-                resultat.setText("Veuillez sélectionner un nom et un lien !");
+
+        } catch (NullPointerException e1){
+            resultat.setText("Veuillez sélectionner un nom,\nla liste des liens sera alors disponible");
         }
     }
 
