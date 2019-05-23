@@ -22,6 +22,8 @@ public class Noeud {
         this.liens = liens;
     }
 
+    public Noeud() {
+    }
 
     public HashSet<String> getLiens() {
         return liens;

@@ -20,6 +20,14 @@ public class Lien {
         this.attributs = attributs;
     }
 
+
+    public Lien(String noeudA, String noeudB, String direction, String type) {
+        this.noeudA = noeudA;
+        this.noeudB = noeudB;
+        this.direction = direction;
+        this.type = type;
+    }
+
     public Lien(Lien lien, String id){
         this.noeudA = lien.noeudA;
         this.noeudB = lien.noeudB;
