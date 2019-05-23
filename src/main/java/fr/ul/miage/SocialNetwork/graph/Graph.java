@@ -124,6 +124,19 @@ public boolean exist(Noeud a) {
         return false;
     }
 
+
+    public HashSet<String> getTypesLiens(){
+        Iterator liensIt = liens.iterator();
+        HashSet<String> types = new HashSet<String>();
+        while (liensIt.hasNext()) {
+            Lien tmp = (Lien) liensIt.next();
+            if (!types.contains(tmp.getType())){
+                types.add(tmp.getType());
+            }
+        }
+        return types;
+    }
+
     public Lien getLienById(String id) {
         Iterator liensIt = liens.iterator();
         Lien tmp;
@@ -135,7 +148,7 @@ public boolean exist(Noeud a) {
         }
         return null;
     }
-
+    
     //retourne le noeud ds le graphe avec son id
     public Noeud getNoeudById(String id) {
         Iterator noeudIterator = noeuds.iterator();
