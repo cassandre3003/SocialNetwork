@@ -1,5 +1,7 @@
 package fr.ul.miage.SocialNetwork.graph;
 
+import fr.ul.miage.SocialNetwork.file.Reader;
+
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -135,7 +137,6 @@ public boolean exist(Noeud a) {
         return false;
     }
 
-
     public Lien getLienById(String id) {
         Iterator liensIt = liens.iterator();
         Lien tmp;
@@ -147,7 +148,8 @@ public boolean exist(Noeud a) {
         }
         return null;
     }
-
+    
+    //retourne le noeud ds le graphe avec son id
     public Noeud getNoeudById(String id) {
         Iterator noeudIterator = noeuds.iterator();
         Noeud tmp;
@@ -159,6 +161,4 @@ public boolean exist(Noeud a) {
         }
         return null;
     }
-
-
 }
