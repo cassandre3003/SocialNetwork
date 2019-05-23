@@ -83,24 +83,27 @@ public class ControllerAccueil implements Initializable {
 
     @FXML
     public void search(ActionEvent e) throws IOException {
-        /*Reader reader = new Reader();
-        Graph graphe = reader.creerGraph();
-        lien.getSelectionModel().getSelectedItem().toString();  //pour récupérer le lien
-        listeDeDepart.getSelectionModel().getSelectedItem().toString();
-        level.getSelectionModel().getSelectedItem().toString();
-        unicite.getSelectionModel().getSelectedItem().toString();
-        parcours.getSelectionModel().getSelectedItem().toString();
+        try {
+            Reader reader = new Reader();
+            Graph graphe = reader.creerGraph();
+            String lienRecupere = lien.getSelectionModel().getSelectedItem().toString();  //pour récupérer le lien
+            String nomRecupere = listeDeDepart.getSelectionModel().getSelectedItem().toString();
+            String profondeurRecupere = level.getSelectionModel().getSelectedItem().toString();
+            String uniciteRecupere = unicite.getSelectionModel().getSelectedItem().toString();
+            String parcoursRecupere = parcours.getSelectionModel().getSelectedItem().toString();
 
-*/
-
-        //à partir de la fonction de Ouaoua et Cassou
-        String [] elements = new String[] { "E", "F" };
-        HashSet<String> res = new HashSet<String>(Arrays.asList(elements));
-        String chaine ="";
-        for ( String str :  res){
-             chaine = chaine + str +"\n";
+            //à partir de la fonction de Ouaoua et Cassou
+            String [] elements = new String[] { "E", "F" };
+            HashSet<String> res = new HashSet<String>(Arrays.asList(elements));
+            String chaine ="";
+            for ( String str :  res){
+                chaine = chaine + str +"\n";
+            }
+            resultat.setText(chaine);
         }
-        resultat.setText(chaine);
+        catch (NullPointerException ex) {
+                resultat.setText("Veuillez sélectionner un nom et un lien !");
+            }
+        }
 
-    }
 }

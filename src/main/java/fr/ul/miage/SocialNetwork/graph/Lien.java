@@ -1,7 +1,6 @@
 package fr.ul.miage.SocialNetwork.graph;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class Lien {
     private String noeudA;  // Anna avec un id

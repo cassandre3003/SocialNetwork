@@ -88,8 +88,6 @@ public boolean exist(Noeud a) {
         return noeudsString;
     }
 
-
-
     // liens par Noeud
     public HashSet<Lien> getLiensByNomNoeud(String nom){
         Noeud noeud = getNoeudByNom(nom);
