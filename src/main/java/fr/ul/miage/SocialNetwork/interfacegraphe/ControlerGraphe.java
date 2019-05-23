@@ -40,7 +40,7 @@ public class ControlerGraphe implements Initializable
         }
         try {
             Graph graphFichier = reader.creerGraph(); //pour créer le graphe a partir de la methode creerGraph
-            pane.setCenter(convertGraph(graphFichier));
+            //pane.setCenter(convertGraph(graphFichier));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +48,7 @@ public class ControlerGraphe implements Initializable
 
     }
 
-
+/*
     public Node convertGraph(Graph cGraph){
         SwingNode fxGraph = new SwingNode();
         org.graphstream.graph.Graph graph = new MultiGraph("test");
@@ -61,7 +61,7 @@ public class ControlerGraphe implements Initializable
         Edge pierreClaudeLink = graph.addEdge(lien1.getAttributs().toString(), claudeNode, pierreNode);
         claudeNode.addAttribute("ui.label", claudeNode.getId());
         pierreNode.addAttribute("ui.label", pierreNode.getId());
-        pierreClaudeLink.addAttribute("ui.label", pierreClaudeLink.getId());*/
+        pierreClaudeLink.addAttribute("ui.label", pierreClaudeLink.getId());
 
 
         HashSet<String> types = cGraph.getTypesLiens();
@@ -124,12 +124,5 @@ public class ControlerGraphe implements Initializable
             i++;
         }
         return legende;
-    }
-
-
-    public static void main(String[] args) {
-
-    }
-
-
+    }*/
 }

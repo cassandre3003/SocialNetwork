@@ -19,7 +19,6 @@ public class Main extends Application
     {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Graphe.fxml"));
         Parent parent = loader.load();
-        ControlerGraphe controller = loader.getController();
         Scene scene = new Scene(parent);
         primaryStage.setScene(scene);
         primaryStage.show();
