@@ -22,12 +22,6 @@ public class Main extends Application
         ControlerGraphe controller = loader.getController();
         Scene scene = new Scene(parent);
         primaryStage.setScene(scene);
-        primaryStage.setOnCloseRequest(event -> {
-            if (!controller.getExecutorService().isShutdown() && !controller.getExecutorService().isTerminated())
-            {
-                controller.getExecutorService().shutdownNow();
-            }
-        });
         primaryStage.show();
     }
 
