@@ -42,7 +42,7 @@ public class ControllerAccueil implements Initializable {
     @FXML
     private Label resultat;
     @FXML
-    public BorderPane pane;
+    private BorderPane pane;
 
 
     @FXML
