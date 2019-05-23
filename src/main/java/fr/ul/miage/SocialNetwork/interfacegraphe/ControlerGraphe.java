@@ -1,36 +1,28 @@
 package fr.ul.miage.SocialNetwork.interfacegraphe;
 
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
 import fr.ul.miage.SocialNetwork.file.Reader;
 import fr.ul.miage.SocialNetwork.graph.Graph;
-import fr.ul.miage.SocialNetwork.graph.Lien;
-import fr.ul.miage.SocialNetwork.graph.Noeud;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-//import org.graphstream.graph.Node;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.implementations.MultiGraph;
-import org.graphstream.graph.implementations.SingleGraph;
+
 import org.graphstream.ui.view.Viewer;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-
-import org.graphstream.ui.spriteManager.*;
 
 public class ControlerGraphe implements Initializable
 {
@@ -72,12 +64,26 @@ public class ControlerGraphe implements Initializable
         pierreClaudeLink.addAttribute("ui.label", pierreClaudeLink.getId());*/
 
 
+        HashSet<String> types = cGraph.getTypesLiens();
+        float r;
+        float g;
+        float b;
+        ArrayList<String> couleurs = new ArrayList<>();
+        for (String type : types) {
+            r = (float) Math.random();
+            g = (float) Math.random();
+            b = (float) Math.random();
+            Color col = new Color(r,g,b);
+            couleurs.add(type + ";rgb(" + col.getRed() + "," + col.getGreen() + "," + col.getBlue() + ")");
+
+        }
+
+        pane.setBottom(creationLegende(couleurs));
 
         cGraph.getNoeuds().forEach(noeud -> {
             org.graphstream.graph.Node node = graph.addNode(noeud.getId());
             node.addAttribute("ui.label",noeud.getNom());
         });
-
         cGraph.getLiens().forEach(lien -> {
             String idA = lien.getNoeudA();
             String idB = lien.getNoeudB();
@@ -85,7 +91,11 @@ public class ControlerGraphe implements Initializable
             org.graphstream.graph.Node nodeB = graph.getNode(idB);
             Edge edge = graph.addEdge(lien.getId(), nodeA, nodeB);
             edge.addAttribute("ui.label",lien.getAttributs().toString());
-            edge.addAttribute("ui.color");
+            for (String couleur : couleurs) {
+                if (couleur.contains(lien.getType())){
+                    edge.addAttribute("ui.style", "fill-color : "+couleur.substring(couleur.indexOf(";")+1) + ";");
+                }
+            }
         });
 
 
@@ -94,6 +104,26 @@ public class ControlerGraphe implements Initializable
         viewer.enableAutoLayout();
         fxGraph.setContent(viewer.addDefaultView(false));
         return fxGraph;
+    }
+
+    public Pane creationLegende(ArrayList<String> couleurs) {
+        Pane legende = new Pane();
+        int i = 0;
+        for (String couleur : couleurs) {
+            Label label = new Label();
+            label.setText(couleur.substring(0,couleur.indexOf(";")));
+            label.setStyle("-fx-text-fill : "+couleur.substring(couleur.indexOf(";")+1) + ";");
+            legende.getChildren().add(label);
+            if (i<8){
+                legende.getChildren().get(i).setLayoutX(i*75);
+            }else {
+                legende.getChildren().get(i).setLayoutX((i-8)*75);
+                legende.getChildren().get(i).setLayoutY((i/8)*10);
+            }
+
+            i++;
+        }
+        return legende;
     }
 
 
