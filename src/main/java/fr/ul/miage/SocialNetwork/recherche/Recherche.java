@@ -5,7 +5,14 @@ import fr.ul.miage.SocialNetwork.file.Reader;
 import fr.ul.miage.SocialNetwork.graph.*;
 
 import java.io.IOException;
+
 import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Stack;
+
 
 public class Recherche {
     // Critères de recherche
@@ -73,9 +80,8 @@ public class Recherche {
         this.unicite = unicite;
     }
 
-
     public HashSet<String> recherche() throws IOException { // Recherche général
-        HashSet<String> resultat = new HashSet<>();
+        HashSet<String>  resultat;
         Reader read = new Reader();
         Graph graph = read.creerGraph();
         if(profondeur == 0){
@@ -145,6 +151,7 @@ public class Recherche {
         return resultat;
     }
 
+
     public HashSet<String> rechercheParcoursLargeurNoeud(Graph graph) { // Filtre le résultat de la recherche selon le parcours en largeur où on ne peut passer q'une seule fois par un même noeud
         LinkedList<Lien> fileLiens = graph.getFileLiensByIdNoeud(noeudID);
         HashSet<String> idLienMarque = new HashSet<>();
@@ -205,7 +212,6 @@ public class Recherche {
         }
         return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction));
     }
-
 
     //Filtre le résultat de la recherche selon le numéro de la profondeur (à quel point...)
     public HashSet<String> rechercheNiveauProfondeur(){

@@ -1,8 +1,10 @@
 package fr.ul.miage.SocialNetwork.graph;
 
+
 import fr.ul.miage.SocialNetwork.recherche.Recherche;
 
 import java.util.*;
+
 
 public class Graph {
     private HashSet<Lien> liens;
@@ -146,7 +148,6 @@ public boolean exist(Noeud a) {
         }
         return resultat;
     }
-
 
     // file de liens par Noeud
     public LinkedList<Lien> getFileLiensByIdNoeud(String id){
