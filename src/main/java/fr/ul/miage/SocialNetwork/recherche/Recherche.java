@@ -1,17 +1,12 @@
 package fr.ul.miage.SocialNetwork.recherche;
 
-import com.sun.org.apache.regexp.internal.RE;
 import fr.ul.miage.SocialNetwork.file.Reader;
-import fr.ul.miage.SocialNetwork.graph.*;
+import fr.ul.miage.SocialNetwork.graph.Graph;
+import fr.ul.miage.SocialNetwork.graph.Lien;
+import fr.ul.miage.SocialNetwork.graph.Noeud;
 
 import java.io.IOException;
-
 import java.util.*;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Stack;
 
 
 public class Recherche {
@@ -85,43 +80,66 @@ public class Recherche {
         Reader read = new Reader();
         Graph graph = read.creerGraph();
         if(profondeur == 0){
-            if(parcours.equals("Longueur d'abord")){
-                if(unicite.equals("NoeudGlobal")){
-                    resultat = rechercheParcoursProfondeurNoeud(graph);
-                }
-                else{
-                    resultat = rechercheParcoursProfondeurLien(graph);
-                }
+            profondeur = Integer.MAX_VALUE;
+        }
+        if(parcours.equals("Longueur d'abord")){
+            if(unicite.equals("NoeudGlobal")){
+                resultat = rechercheParcoursProfondeurNoeud(graph);
             }
             else{
-                if(unicite.equals("NoeudGlobal")){
-                    resultat = rechercheParcoursLargeurNoeud(graph);
-                }
-                else{
-                    resultat = rechercheParcoursLargeurLien(graph);
-                }
+                resultat = rechercheParcoursProfondeurLien(graph);
             }
         }
         else{
-            resultat = rechercheNiveauProfondeur();
+            if(unicite.equals("NoeudGlobal")){
+                resultat = rechercheParcoursLargeurNoeud(graph);
+            }
+            else{
+                resultat = rechercheParcoursLargeurLien(graph);
+            }
         }
         return resultat;
     }
 
+    public HashSet<Lien> ajoutDePositionLien(HashSet<Lien> liens, int position){
+        liens.forEach(lien -> {
+            lien.setPosition(position);
+        });
+        return liens;
+    }
+
+    public HashSet<Noeud> ajoutDePositionNoeud(HashSet<String> ids, Graph graph, int position){
+        HashSet<Noeud> noeuds = new HashSet<>();
+        Noeud noeud;
+        for (String id : ids) {
+            noeud = graph.getNoeudById(id);
+            noeud.setPosition(position);
+            noeuds.add(noeud);
+        }
+        return noeuds;
+    }
+
     public HashSet<String> rechercheParcoursProfondeurNoeud(Graph graph) { // Filtre le résultat de la recherche selon le parcours en profondeur où on ne peut passer qu'une seule fois par un même noeud
-        Stack<Lien> pileLiens = graph.getPileLiensByIdNoeud(noeudID); //création d'une pile pour voir si on est passé plusieurs fois sur un noeud
-        HashSet<String> idLienMarque = new HashSet<>();
+        HashSet<Lien> liens = graph.getLiensByIdNoeud(noeudID); //création d'une pile pour voir si on est passé plusieurs fois sur un noeud
+        int position = 1;
+        Stack<Lien> pileLiens = new Stack<>();
+        pileLiens.addAll(ajoutDePositionLien(liens, position));
         Lien lien;
         Noeud noeudVoisin;
+        ArrayList<String> idLienMarques = new ArrayList();
         HashSet<String> res = new HashSet<>();
         while (!pileLiens.empty()) { // Tant que la pile n'est pas vide
             lien = pileLiens.pop(); //On retire un lien de la pile
-            if (lienValide(lien) && !idLienMarque.contains(lien.getId())) { //Si le lien est valide
-                idLienMarque.add(lien.getId()); // Marquer le lien
+            position = lien.getPosition()+1;
+            if (lienValide(lien)&& !idLienMarques.contains(lien.getId())) { //Si le lien est valide
+                idLienMarques.add(lien.getId()); // Marquer le lien
                 if (!lien.getNoeudB().equals(noeudID)) { //Si le noeud n'est pas celui sur lequel on est
                     noeudVoisin = graph.getNoeudById(lien.getNoeudB()); // prend le noeud voisin
-                    res.add(noeudVoisin.getNom());
-                    pileLiens.addAll(graph.getPileLiensByIdNoeud(lien.getNoeudB()));
+                    if (profondeur >= lien.getPosition()){
+                        res.add(noeudVoisin.getNom());
+                        ajoutDePositionLien(graph.getLiensByIdNoeud(lien.getNoeudB()),position);
+                        pileLiens.addAll(ajoutDePositionLien(graph.getLiensByIdNoeud(lien.getNoeudB()),position));
+                    }
                 }
             }
         }
@@ -130,22 +148,28 @@ public class Recherche {
 
     public HashSet<String> rechercheParcoursProfondeurLien(Graph graph){
         HashSet<String> resultat = new HashSet<>();
+        int position=0;
         ArrayList<String> idLienMarques = new ArrayList();
         Stack<Noeud> pileNoeuds = new Stack();
-        HashSet<String> noeudsVoisin = new HashSet<>();
-        String idNoeudVoisin;
+        HashSet<String> idNoeudsVoisin = new HashSet<>();
+        HashSet<Noeud> noeudsVoisin = new HashSet<>();
+        Noeud noeudVoisin;
         Lien lien;
-        pileNoeuds.push(graph.getNoeudById(noeudID));
+        Noeud noeud = graph.getNoeudById(noeudID);
+        noeud.setPosition(position);
+        pileNoeuds.push(noeud);
         while(!pileNoeuds.empty()){
-            Noeud noeud = pileNoeuds.pop();
-            if (!noeud.getId().equals(noeudID)){
+            noeud = pileNoeuds.pop();
+            position = noeud.getPosition()+1;
+            if (!noeud.getId().equals(noeudID) && noeud.getPosition() <= profondeur){
                 resultat.add(noeud.getNom());
             }
-            noeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques);
+            idNoeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques, noeud.getId());
+            noeudsVoisin = ajoutDePositionNoeud(idNoeudsVoisin, graph, position);
             Iterator noeudsIt = noeudsVoisin.iterator();
             while(noeudsIt.hasNext()){
-                idNoeudVoisin = (String)noeudsIt.next();
-                pileNoeuds.push(graph.getNoeudById(idNoeudVoisin));
+                noeudVoisin = (Noeud)noeudsIt.next();
+                pileNoeuds.push(noeudVoisin);
             }
         }
         return resultat;
@@ -153,43 +177,59 @@ public class Recherche {
 
 
     public HashSet<String> rechercheParcoursLargeurNoeud(Graph graph) { // Filtre le résultat de la recherche selon le parcours en largeur où on ne peut passer q'une seule fois par un même noeud
-        LinkedList<Lien> fileLiens = graph.getFileLiensByIdNoeud(noeudID);
-        HashSet<String> idLienMarque = new HashSet<>();
+        HashSet<Lien> liens = graph.getLiensByIdNoeud(noeudID);
+        int position = 1;
         Lien lien;
+        HashSet<String> idLienMarque = new HashSet<>();
+        liens = ajoutDePositionLien(liens, position);
+        LinkedList<Lien> fileLiens = graph.getFileLiensByIdNoeud(noeudID);
         Noeud noeudVoisin;
         HashSet<String> res = new HashSet<>();
         while (!fileLiens.isEmpty()) { // Tant que la pile n'est pas vide
             lien = fileLiens.pop(); //On retire un lien de la pile
             if (lienValide(lien) && !idLienMarque.contains(lien.getId())) { //Si le lien est valide
                 idLienMarque.add(lien.getId()); // Marquer le lien
-                if (!lien.getNoeudB().equals(noeudID)) { //Si le noeud n'est pas celui sur lequel on est
+                if (!lien.getNoeudB().equals(noeudID) && lien.getPosition() <= profondeur) { //Si le noeud n'est pas celui sur lequel on est
                     noeudVoisin = graph.getNoeudById(lien.getNoeudB()); // prend le noeud voisin
                     res.add(noeudVoisin.getNom());
+                    liens = graph.getLiensByIdNoeud(lien.getNoeudB());
+                    position = lien.getPosition()+1;
+                    liens = ajoutDePositionLien(liens, position);
                     fileLiens.addAll(graph.getFileLiensByIdNoeud(lien.getNoeudB()));
+
                 }
             }
+
         }
         return res;
     }
 
     public HashSet<String> rechercheParcoursLargeurLien(Graph graph){
         HashSet<String> resultat = new HashSet<>();
+        int position = 0;
         ArrayList<String> idLienMarques = new ArrayList();
         LinkedList<Noeud> fileNoeuds = new LinkedList<>();
+        HashSet<String> idsNoeudsVoisin = new HashSet<>();
         HashSet<String> noeudsVoisin = new HashSet<>();
         String idNoeudVoisin;
         Lien lien;
-        fileNoeuds.push(graph.getNoeudById(noeudID));
+        Noeud noeud = graph.getNoeudById(noeudID);
+        noeud.setPosition(position);
+        fileNoeuds.push(noeud);
         while(!fileNoeuds.isEmpty()){
-            Noeud noeud = fileNoeuds.pop();
-            if (!noeud.getId().equals(noeudID)){
+            noeud = fileNoeuds.pop();
+            if (!noeud.getId().equals(noeudID) && noeud.getPosition() <= profondeur) {
                 resultat.add(noeud.getNom());
             }
-            noeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques);
-            Iterator noeudsIt = noeudsVoisin.iterator();
-            while(noeudsIt.hasNext()){
-                idNoeudVoisin = (String)noeudsIt.next();
-                fileNoeuds.push(graph.getNoeudById(idNoeudVoisin));
+            idsNoeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques, noeud.getId());
+            position = 1 + noeud.getPosition();
+            for (String id : idsNoeudsVoisin) {
+                noeud = graph.getNoeudById(id);
+                if (!fileNoeuds.contains(noeud)){
+                    noeud.setPosition(position);
+                    fileNoeuds.add(noeud);
+                }
+
             }
         }
         return resultat;
