@@ -73,6 +73,15 @@ public class Lien {
         this.attributs = attributs;
     }
 
+    public boolean attributsValides(HashSet<String> attributsATester){
+        for ( String str :  attributsATester){
+            if (!attributs.contains(str)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public String getDirection() {
         return direction;
     }

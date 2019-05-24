@@ -17,6 +17,8 @@ public class Recherche {
     private String direction;
     private int profondeur; //Si la profondeur est à 0, on fait tout l'arbre
     private String unicite;
+    private HashSet<String> attributs;
+
 
     public Recherche(String direction, String noeudID, String typeLien) {
         this.direction = direction;
@@ -25,6 +27,15 @@ public class Recherche {
     }
 
     public Recherche() {
+    }
+
+
+    public HashSet<String> getAttributs() {
+        return attributs;
+    }
+
+    public void setAttributs(HashSet<String> attributs) {
+        this.attributs = attributs;
     }
 
     public String getParcours() {
@@ -235,30 +246,35 @@ public class Recherche {
         return resultat;
     }
 
-
-
-
     public boolean lienValide(Lien lien){
-        if(lien.getNoeudB().equals(noeudID)){
-            if(direction.equals("AB")) {
-                return (lien.getType().equals(typeLien) && lien.getDirection().equals("BA"));
+        if (!(attributs == null)){
+            if(lien.getNoeudB().equals(noeudID)){
+                if(direction.equals("AB")) {
+                    return (lien.getType().equals(typeLien) && lien.getDirection().equals("BA") && lien.attributsValides(attributs));
+                }
+                else if(direction.equals("BA")) {
+                    return (lien.getType().equals(typeLien) && lien.getDirection().equals("AB") && lien.attributsValides(attributs));
+                }
+                else{
+                    return lien.getType().equals(typeLien) && lien.getDirection().equals(direction)&& lien.attributsValides(attributs);
+                }
             }
-            else if(direction.equals("BA")) {
-                return (lien.getType().equals(typeLien) && lien.getDirection().equals("AB"));
+            System.out.println(lien.getAttributs().toString());
+            System.out.println(lien.getType().equals(typeLien) && lien.getDirection().equals(direction)&& lien.attributsValides(attributs));
+            return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction)&& lien.attributsValides(attributs));
+        }else {
+            if(lien.getNoeudB().equals(noeudID)){
+                if(direction.equals("AB")) {
+                    return (lien.getType().equals(typeLien) && lien.getDirection().equals("BA") );
+                }
+                else if(direction.equals("BA")) {
+                    return (lien.getType().equals(typeLien) && lien.getDirection().equals("AB") );
+                }
+                else{
+                    return lien.getType().equals(typeLien) && lien.getDirection().equals(direction);
+                }
             }
-            else{
-                return lien.getType().equals(typeLien) && lien.getDirection().equals(direction);
-            }
+            return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction));
         }
-        return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction));
     }
-
-    //Filtre le résultat de la recherche selon le numéro de la profondeur (à quel point...)
-    public HashSet<String> rechercheNiveauProfondeur(){
-        HashSet<String> resultat = new HashSet<>();
-
-
-        return resultat;
-    }
-
 }
