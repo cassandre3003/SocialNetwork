@@ -164,7 +164,6 @@ public class Recherche {
         Stack<Noeud> pileNoeuds = new Stack();
         HashSet<String> idNoeudsVoisin = new HashSet<>();
         HashSet<Noeud> noeudsVoisin = new HashSet<>();
-        Noeud noeudVoisin;
         Lien lien;
         Noeud noeud = graph.getNoeudById(noeudID);
         noeud.setPosition(position);
@@ -177,11 +176,10 @@ public class Recherche {
             }
             idNoeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques, noeud.getId());
             noeudsVoisin = ajoutDePositionNoeud(idNoeudsVoisin, graph, position);
-            Iterator noeudsIt = noeudsVoisin.iterator();
-            while(noeudsIt.hasNext()){
-                noeudVoisin = (Noeud)noeudsIt.next();
+            noeudsVoisin.forEach(noeudVoisin -> {
                 pileNoeuds.push(noeudVoisin);
-            }
+
+            });
         }
         return resultat;
     }
@@ -259,8 +257,6 @@ public class Recherche {
                     return lien.getType().equals(typeLien) && lien.getDirection().equals(direction)&& lien.attributsValides(attributs);
                 }
             }
-            System.out.println(lien.getAttributs().toString());
-            System.out.println(lien.getType().equals(typeLien) && lien.getDirection().equals(direction)&& lien.attributsValides(attributs));
             return (lien.getType().equals(typeLien) && lien.getDirection().equals(direction)&& lien.attributsValides(attributs));
         }else {
             if(lien.getNoeudB().equals(noeudID)){

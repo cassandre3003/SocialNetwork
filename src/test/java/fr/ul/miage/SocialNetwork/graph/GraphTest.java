@@ -34,26 +34,6 @@ public class GraphTest {
         assertEquals(2,test.graph.typeLienParNomNoeud("Claude").size());
     }
 
-    /*@Test
-    public void getNoeudsTest(){
-        HashSet<Lien> liens = new HashSet<Lien>();
-        Interpreteur interpreteur = new Interpreteur(ligne1);
-        liens.add(interpreteur.getLien());
-        interpreteur.setLigne(ligne2);
-        liens.add(interpreteur.getLien());
-        interpreteur.setLigne(ligne3);
-        liens.add(interpreteur.getLien());
-        interpreteur.setLigne(ligne4);
-        liens.add(interpreteur.getLien());
-        interpreteur.setLigne(ligne5);
-        liens.add(interpreteur.getLien());
-        interpreteur.setLigne(ligne6);
-        liens.add(interpreteur.getLien());
-        Graph graph = new Graph(liens,noeuds);
-        assertEquals(7,graph.getNoeuds().size());
-    }*/
-
-
     @Test
     public void getTypesLiensTest() throws IOException {
         Reader reader = new Reader();
