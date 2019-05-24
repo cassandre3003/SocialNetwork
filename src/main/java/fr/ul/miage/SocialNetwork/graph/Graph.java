@@ -161,9 +161,13 @@ public class Graph {
         return resultat;
     }
 
-    public HashSet<String> getNoeudsVoisinsById(Recherche recherche, ArrayList<String> liensMarques){
-        String idNoeud = recherche.getNoeudID();
+
+
+
+    public HashSet<String> getNoeudsVoisinsById(Recherche recherche, ArrayList<String> liensMarques, String idNoeud){
         HashSet<String> resultattmp = new HashSet<String>();
+        Recherche recherche2 = recherche;
+        recherche2.setNoeudID(idNoeud);
         Noeud noeud = getNoeudById(idNoeud);
         Lien lien;
         HashSet<String> liens = noeud.getLiens();
@@ -173,19 +177,19 @@ public class Graph {
             tmp = (String) it.next();
             if (!liensMarques.contains(tmp)){
                 resultattmp.add(tmp);
-                liensMarques.add(tmp);
             }
         }
         it = resultattmp.iterator();
         HashSet<String> resultat = new HashSet<>();
         while (it.hasNext()){
             lien = getLienById((String) it.next());
-            if(recherche.lienValide(lien)){
+            if(recherche2.lienValide(lien)){
                 if (lien.getNoeudA().equals(idNoeud)){
                     resultat.add(lien.getNoeudB());
                 }else {
                     resultat.add(lien.getNoeudA());
                 }
+                liensMarques.add(lien.getId());
             }
         }
         return resultat;
@@ -233,6 +237,8 @@ public class Graph {
         }
         return null;
     }
+
+
 
 
 }

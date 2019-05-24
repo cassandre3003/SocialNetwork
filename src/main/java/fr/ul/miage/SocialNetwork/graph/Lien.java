@@ -9,6 +9,15 @@ public class Lien {
     private String direction; // (inexistante, AB, BA) --> A voir une énumération ?????
     private String type;   // siblings
     private HashSet<String> attributs; // since=2013
+    private int position; // pour la recherche
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public Lien(String noeudA, String noeudB, String id, String direction, String type, HashSet<String> attributs) {
         this.noeudA = noeudA;

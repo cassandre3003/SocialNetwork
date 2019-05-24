@@ -1,11 +1,11 @@
 package fr.ul.miage.SocialNetwork.graph;
 
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class Noeud {
     private String nom;
     private String id;
+    private int position; // pour la recherche
     private HashSet<String> liens; // les ID des liens
 
     public String getId() {
@@ -34,6 +34,13 @@ public class Noeud {
     }
 
 
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public Noeud(String nom) {
         this.nom = nom;
