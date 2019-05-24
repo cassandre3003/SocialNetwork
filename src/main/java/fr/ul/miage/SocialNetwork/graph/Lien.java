@@ -70,7 +70,9 @@ public class Lien {
 
     public void setDirection(String direction) {
         this.direction = direction;
-    }public HashSet<String> getAttributs() {
+    }
+
+    public HashSet<String> getAttributs() {
         return attributs;
     }
 

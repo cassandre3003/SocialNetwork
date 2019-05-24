@@ -22,6 +22,7 @@ public class Recherche {
     private String direction;
     private int profondeur; //Si la profondeur est à 0, on fait tout l'arbre
     private String unicite;
+    private HashSet<String> attributs;
 
     public Recherche(String direction, String noeudID, String typeLien) {
         this.direction = direction;
@@ -29,13 +30,14 @@ public class Recherche {
         this.typeLien = typeLien;
     }
 
-    public Recherche(String parcours, int profondeur, String unicite, String direction, String noeudID, String typeLien) {
+    public Recherche(String parcours, int profondeur, String unicite, String direction, String noeudID, String typeLien, HashSet<String> attributs) {
         this.direction = direction;
         this.noeudID = noeudID;
         this.typeLien = typeLien;
         this.parcours = parcours;
         this.profondeur = profondeur;
         this.unicite = unicite;
+        this.attributs=attributs;
     }
 
     public Recherche() {
