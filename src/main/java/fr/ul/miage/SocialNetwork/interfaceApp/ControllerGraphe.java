@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import org.graphstream.graph.Edge;
@@ -44,7 +45,7 @@ public class ControllerGraphe implements Initializable {
     @FXML
     private Button recherche;
     @FXML
-    private Label resultat;
+    private ListView resultat;
     @FXML
     private BorderPane pane;
 
@@ -57,7 +58,7 @@ public class ControllerGraphe implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             Graph graphe = reader.creerGraph();
             pane.setCenter(convertGraph(graphe));
             //ajout des options par défaut et d'éléments ne nécessitant aucun traitement particulier
@@ -65,7 +66,7 @@ public class ControllerGraphe implements Initializable {
             unicite.getItems().addAll("NoeudGlobal", "RelationGlobal");
             listeDeDepart.getItems().add("Choisir un nom");
             level.getItems().add("0 (par defaut)");
-            direction.getItems().addAll("AB","BA", "inexistante");
+            direction.getItems().addAll("Noeud -> B", "B -> Noeud", "Noeud <-> B");
 
             //ajout de l'intégralité des noms présents ds le fichier
             for (String str : graphe.getNomNoeuds()) {
@@ -75,8 +76,8 @@ public class ControllerGraphe implements Initializable {
             /* ajout du nombre pour  la profondeur
              * ce nombre est obtenu à partir du nombre total de liens,
              * la profondeur ne pourra donc pas dépasser ce nombre
-            */
-            for (int i=1; i< graphe.getLiens().size();i++){
+             */
+            for (int i = 1; i < graphe.getLiens().size(); i++) {
                 level.getItems().add(i);
             }
             //affichage de l'option par défaut
@@ -104,6 +105,7 @@ public class ControllerGraphe implements Initializable {
 
     @FXML
     public void search(ActionEvent e) throws IOException {
+        resultat.getItems().clear();
         Reader reader = null; //pour lire le fichier
         try {
             reader = new Reader();
@@ -112,37 +114,55 @@ public class ControllerGraphe implements Initializable {
         }
         try {
             Graph graphe = reader.creerGraph();
-
+            int profondeur;
             String lienRecupere = lien.getSelectionModel().getSelectedItem().toString();  //pour récupérer le lien
             String nomRecupere = listeDeDepart.getSelectionModel().getSelectedItem().toString();
             String dirRecupere = direction.getSelectionModel().getSelectedItem().toString();
             String profondeurRecupere = level.getSelectionModel().getSelectedItem().toString();
-            int profondeur;
             String uniciteRecupere = unicite.getSelectionModel().getSelectedItem().toString();
             String parcoursRecupere = parcours.getSelectionModel().getSelectedItem().toString();
 
+
+            //on convertit les informations sélectionnes afin de pouvoir faire les traitements
+            //conversion de la profondeur
             if (profondeurRecupere.equals("0 (par defaut)")) {
                 profondeur = 0;
             } else {
                 profondeur = Integer.parseInt(profondeurRecupere);
             }
 
-            Recherche recherche = new Recherche(parcoursRecupere, profondeur, uniciteRecupere, dirRecupere, graphe.getNoeudByNom(nomRecupere).getId(), lienRecupere);
-
-            HashSet<String> res = recherche.recherche();
-            Iterator resRequest = res.iterator();
-            String chaine="";
-            while (resRequest.hasNext()) {
-                chaine = chaine + resRequest.next()+ "\n";
+            //conversion de la direction
+            if (dirRecupere.equals("Noeud -> B")){
+                dirRecupere = "AB";
             }
-            resultat.setText(chaine);
+            if (dirRecupere.equals("B -> Noeud")){
+                dirRecupere = "BA";
+            }
+            //on initialise la recherche afin de la lancer
+            Recherche recherche = new Recherche(parcoursRecupere, profondeur, uniciteRecupere, dirRecupere, graphe.getNoeudByNom(nomRecupere).getId(), lienRecupere);
+            HashSet<String> res = recherche.recherche();
 
-        } catch (NullPointerException e1){
-            resultat.setText("Veuillez sélectionner un nom,\nla liste des liens sera alors disponible");
+            //on regarde les resultats obtenus par la recherche
+            String chaine = "";
+            if (res.isEmpty()) {
+                chaine = "Aucun résultat pour la recherche";
+            }
+            else {
+                Iterator resRequest = res.iterator();
+                while (resRequest.hasNext()) {
+                    chaine = chaine + resRequest.next() + "\n";
+                }
+            }
+            resultat.getItems().add(chaine);
+
+
+        } catch (NullPointerException e1) {
+            resultat.getItems().add("Veuillez sélectionner un nom,\nla liste des liens sera alors disponible");
         }
     }
 
-    public Node convertGraph(Graph cGraph){
+    //code pour convertir et afficher le graphe
+    public Node convertGraph(Graph cGraph) {
         SwingNode fxGraph = new SwingNode();
         org.graphstream.graph.Graph graph = new MultiGraph("test");
         /*Noeud claude = cGraph.getNoeudByNom("Claude");
@@ -166,7 +186,7 @@ public class ControllerGraphe implements Initializable {
             r = (float) Math.random();
             g = (float) Math.random();
             b = (float) Math.random();
-            Color col = new Color(r,g,b);
+            Color col = new Color(r, g, b);
             couleurs.add(type + ";rgb(" + col.getRed() + "," + col.getGreen() + "," + col.getBlue() + ")");
 
         }
@@ -175,7 +195,7 @@ public class ControllerGraphe implements Initializable {
 
         cGraph.getNoeuds().forEach(noeud -> {
             org.graphstream.graph.Node node = graph.addNode(noeud.getId());
-            node.addAttribute("ui.label",noeud.getNom());
+            node.addAttribute("ui.label", noeud.getNom());
         });
         cGraph.getLiens().forEach(lien -> {
             String idA = lien.getNoeudA();
@@ -183,10 +203,10 @@ public class ControllerGraphe implements Initializable {
             org.graphstream.graph.Node nodeA = graph.getNode(idA);
             org.graphstream.graph.Node nodeB = graph.getNode(idB);
             Edge edge = graph.addEdge(lien.getId(), nodeA, nodeB);
-            edge.addAttribute("ui.label",lien.getAttributs().toString());
+            edge.addAttribute("ui.label", lien.getAttributs().toString());
             for (String couleur : couleurs) {
-                if (couleur.contains(lien.getType())){
-                    edge.addAttribute("ui.style", "fill-color : "+couleur.substring(couleur.indexOf(";")+1) + ";");
+                if (couleur.contains(lien.getType())) {
+                    edge.addAttribute("ui.style", "fill-color : " + couleur.substring(couleur.indexOf(";") + 1) + ";");
                 }
             }
         });
@@ -199,19 +219,21 @@ public class ControllerGraphe implements Initializable {
         return fxGraph;
     }
 
+
+    //creation de la légende qui sera affichée en dessous du graphe
     public Pane creationLegende(ArrayList<String> couleurs) {
         Pane legende = new Pane();
         int i = 0;
         for (String couleur : couleurs) {
             Label label = new Label();
-            label.setText(couleur.substring(0,couleur.indexOf(";")));
-            label.setStyle("-fx-text-fill : "+couleur.substring(couleur.indexOf(";")+1) + ";");
+            label.setText(couleur.substring(0, couleur.indexOf(";")));
+            label.setStyle("-fx-text-fill : " + couleur.substring(couleur.indexOf(";") + 1) + ";");
             legende.getChildren().add(label);
-            if (i<8){
-                legende.getChildren().get(i).setLayoutX(i*75);
-            }else {
-                legende.getChildren().get(i).setLayoutX((i-8)*75);
-                legende.getChildren().get(i).setLayoutY((i/8)*10);
+            if (i < 8) {
+                legende.getChildren().get(i).setLayoutX(i * 75);
+            } else {
+                legende.getChildren().get(i).setLayoutX((i - 8) * 75);
+                legende.getChildren().get(i).setLayoutY((i / 8) * 10);
             }
 
             i++;

@@ -26,13 +26,13 @@ public class Recherche {
     public Recherche(String direction, String noeudID, String typeLien) {
         this.direction = direction;
         this.noeudID = noeudID;
-        this.typeLien= typeLien;
+        this.typeLien = typeLien;
     }
 
-    public Recherche(String parcours,int profondeur, String unicite,String direction, String noeudID, String typeLien) {
+    public Recherche(String parcours, int profondeur, String unicite, String direction, String noeudID, String typeLien) {
         this.direction = direction;
         this.noeudID = noeudID;
-        this.typeLien= typeLien;
+        this.typeLien = typeLien;
         this.parcours = parcours;
         this.profondeur = profondeur;
         this.unicite = unicite;
@@ -41,7 +41,6 @@ public class Recherche {
     public Recherche() {
 
     }
-
 
     public String getParcours() {
         return parcours;
@@ -92,28 +91,24 @@ public class Recherche {
     }
 
     public HashSet<String> recherche() throws IOException { // Recherche général
-        HashSet<String>  resultat;
+        HashSet<String> resultat;
         Reader read = new Reader();
         Graph graph = read.creerGraph();
-        if(profondeur == 0){
-            if(parcours.equals("Longueur d'abord")){
-                if(unicite.equals("NoeudGlobal")){
+        if (profondeur == 0) {
+            if (parcours.equals("Longueur d'abord")) {
+                if (unicite.equals("NoeudGlobal")) {
                     resultat = rechercheParcoursProfondeurNoeud(graph);
-                }
-                else{
+                } else {
                     resultat = rechercheParcoursProfondeurLien(graph);
                 }
-            }
-            else{
-                if(unicite.equals("NoeudGlobal")){
+            } else {
+                if (unicite.equals("NoeudGlobal")) {
                     resultat = rechercheParcoursLargeurNoeud(graph);
-                }
-                else{
+                } else {
                     resultat = rechercheParcoursLargeurLien(graph);
                 }
             }
-        }
-        else{
+        } else {
             resultat = rechercheNiveauProfondeur();
         }
         return resultat;
@@ -139,7 +134,7 @@ public class Recherche {
         return res;
     }
 
-    public HashSet<String> rechercheParcoursProfondeurLien(Graph graph){
+    public HashSet<String> rechercheParcoursProfondeurLien(Graph graph) {
         HashSet<String> resultat = new HashSet<>();
         ArrayList<String> idLienMarques = new ArrayList();
         Stack<Noeud> pileNoeuds = new Stack();
@@ -147,21 +142,20 @@ public class Recherche {
         String idNoeudVoisin;
         Lien lien;
         pileNoeuds.push(graph.getNoeudById(noeudID));
-        while(!pileNoeuds.empty()){
+        while (!pileNoeuds.empty()) {
             Noeud noeud = pileNoeuds.pop();
-            if (!noeud.getId().equals(noeudID)){
+            if (!noeud.getId().equals(noeudID)) {
                 resultat.add(noeud.getNom());
             }
-            noeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques);
+            noeudsVoisin = graph.getNoeudsVoisinsById(this, idLienMarques);
             Iterator noeudsIt = noeudsVoisin.iterator();
-            while(noeudsIt.hasNext()){
-                idNoeudVoisin = (String)noeudsIt.next();
+            while (noeudsIt.hasNext()) {
+                idNoeudVoisin = (String) noeudsIt.next();
                 pileNoeuds.push(graph.getNoeudById(idNoeudVoisin));
             }
         }
         return resultat;
     }
-
 
     public HashSet<String> rechercheParcoursLargeurNoeud(Graph graph) { // Filtre le résultat de la recherche selon le parcours en largeur où on ne peut passer q'une seule fois par un même noeud
         LinkedList<Lien> fileLiens = graph.getFileLiensByIdNoeud(noeudID);
@@ -183,7 +177,7 @@ public class Recherche {
         return res;
     }
 
-    public HashSet<String> rechercheParcoursLargeurLien(Graph graph){
+    public HashSet<String> rechercheParcoursLargeurLien(Graph graph) {
         HashSet<String> resultat = new HashSet<>();
         ArrayList<String> idLienMarques = new ArrayList();
         LinkedList<Noeud> fileNoeuds = new LinkedList<>();
@@ -191,15 +185,15 @@ public class Recherche {
         String idNoeudVoisin;
         Lien lien;
         fileNoeuds.push(graph.getNoeudById(noeudID));
-        while(!fileNoeuds.isEmpty()){
+        while (!fileNoeuds.isEmpty()) {
             Noeud noeud = fileNoeuds.pop();
-            if (!noeud.getId().equals(noeudID)){
+            if (!noeud.getId().equals(noeudID)) {
                 resultat.add(noeud.getNom());
             }
-            noeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques);
+            noeudsVoisin = graph.getNoeudsVoisinsById(this, idLienMarques);
             Iterator noeudsIt = noeudsVoisin.iterator();
-            while(noeudsIt.hasNext()){
-                idNoeudVoisin = (String)noeudsIt.next();
+            while (noeudsIt.hasNext()) {
+                idNoeudVoisin = (String) noeudsIt.next();
                 fileNoeuds.push(graph.getNoeudById(idNoeudVoisin));
             }
         }
@@ -207,17 +201,13 @@ public class Recherche {
     }
 
 
-
-
-    public boolean lienValide(Lien lien){
-        if(lien.getNoeudB().equals(noeudID)){
-            if(direction.equals("AB")) {
+    public boolean lienValide(Lien lien) {
+        if (lien.getNoeudB().equals(noeudID)) {
+            if (direction.equals("AB")) {
                 return (lien.getType().equals(typeLien) && lien.getDirection().equals("BA"));
-            }
-            else if(direction.equals("BA")) {
+            } else if (direction.equals("BA")) {
                 return (lien.getType().equals(typeLien) && lien.getDirection().equals("AB"));
-            }
-            else{
+            } else {
                 return lien.getType().equals(typeLien) && lien.getDirection().equals(direction);
             }
         }
@@ -225,11 +215,8 @@ public class Recherche {
     }
 
     //Filtre le résultat de la recherche selon le numéro de la profondeur (à quel point...)
-    public HashSet<String> rechercheNiveauProfondeur(){
+    public HashSet<String> rechercheNiveauProfondeur() {
         HashSet<String> resultat = new HashSet<>();
-
-
         return resultat;
     }
-
 }

@@ -63,7 +63,7 @@ public class Graph {
         return false;
     }
 
-    public Noeud getNoeudByNom(String nom){
+    public Noeud getNoeudByNom(String nom) {
         Iterator noeudsIt = noeuds.iterator();
         Noeud tmp;
         while (noeudsIt.hasNext()) {
@@ -75,12 +75,12 @@ public class Graph {
         return null;
     }
 
-    public HashSet<String> getTypesLiens(){
+    public HashSet<String> getTypesLiens() {
         Iterator liensIt = liens.iterator();
         HashSet<String> types = new HashSet<String>();
         while (liensIt.hasNext()) {
             Lien tmp = (Lien) liensIt.next();
-            if (!types.contains(tmp.getType())){
+            if (!types.contains(tmp.getType())) {
                 types.add(tmp.getType());
             }
         }
@@ -89,11 +89,11 @@ public class Graph {
 
 
     // les noms des noeuds pour l'affichage
-    public HashSet<String> getNomNoeuds(){
+    public HashSet<String> getNomNoeuds() {
         Noeud tmp;
         HashSet<String> noeudsString = new HashSet<String>();
         Iterator noeudsIt = noeuds.iterator();
-        while (noeudsIt.hasNext()){
+        while (noeudsIt.hasNext()) {
             tmp = (Noeud) noeudsIt.next();
             noeudsString.add(tmp.getNom());
         }
@@ -101,13 +101,13 @@ public class Graph {
     }
 
     // liens par Noeud
-    public HashSet<Lien> getLiensByNomNoeud(String nom){
+    public HashSet<Lien> getLiensByNomNoeud(String nom) {
         Noeud noeud = getNoeudByNom(nom);
         String idLien;
         Lien lien;
         HashSet<Lien> resultat = new HashSet<Lien>();
         Iterator liensIt = noeud.getLiens().iterator();
-        while (liensIt.hasNext()){
+        while (liensIt.hasNext()) {
             idLien = (String) liensIt.next();
             lien = getLienById(idLien);
             resultat.add(lien);
@@ -116,13 +116,13 @@ public class Graph {
     }
 
     // liens par Noeud
-    public HashSet<Lien> getLiensByIdNoeud(String id){
+    public HashSet<Lien> getLiensByIdNoeud(String id) {
         Noeud noeud = getNoeudById(id);
         String idLien;
         Lien lien;
         HashSet<Lien> resultat = new HashSet<Lien>();
         Iterator liensIt = noeud.getLiens().iterator();
-        while (liensIt.hasNext()){
+        while (liensIt.hasNext()) {
             idLien = (String) liensIt.next();
             lien = getLienById(idLien);
             resultat.add(lien);
@@ -131,13 +131,13 @@ public class Graph {
     }
 
     // pile de liens par Noeud
-    public Stack<Lien> getPileLiensByIdNoeud(String id){
+    public Stack<Lien> getPileLiensByIdNoeud(String id) {
         Noeud noeud = getNoeudById(id);
         String idLien;
         Lien lien;
         Stack<Lien> resultat = new Stack();
         Iterator liensIt = noeud.getLiens().iterator();
-        while (liensIt.hasNext()){
+        while (liensIt.hasNext()) {
             idLien = (String) liensIt.next();
             lien = getLienById(idLien);
             resultat.push(lien);
@@ -147,13 +147,13 @@ public class Graph {
 
 
     // file de liens par Noeud
-    public LinkedList<Lien> getFileLiensByIdNoeud(String id){
+    public LinkedList<Lien> getFileLiensByIdNoeud(String id) {
         Noeud noeud = getNoeudById(id);
         String idLien;
         Lien lien;
         LinkedList<Lien> resultat = new LinkedList<Lien>();
         Iterator liensIt = noeud.getLiens().iterator();
-        while (liensIt.hasNext()){
+        while (liensIt.hasNext()) {
             idLien = (String) liensIt.next();
             lien = getLienById(idLien);
             resultat.push(lien);
@@ -161,7 +161,7 @@ public class Graph {
         return resultat;
     }
 
-    public HashSet<String> getNoeudsVoisinsById(Recherche recherche, ArrayList<String> liensMarques){
+    public HashSet<String> getNoeudsVoisinsById(Recherche recherche, ArrayList<String> liensMarques) {
         String idNoeud = recherche.getNoeudID();
         HashSet<String> resultattmp = new HashSet<String>();
         Noeud noeud = getNoeudById(idNoeud);
@@ -169,21 +169,21 @@ public class Graph {
         HashSet<String> liens = noeud.getLiens();
         String tmp;
         Iterator it = liens.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             tmp = (String) it.next();
-            if (!liensMarques.contains(tmp)){
+            if (!liensMarques.contains(tmp)) {
                 resultattmp.add(tmp);
                 liensMarques.add(tmp);
             }
         }
         it = resultattmp.iterator();
         HashSet<String> resultat = new HashSet<>();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             lien = getLienById((String) it.next());
-            if(recherche.lienValide(lien)){
-                if (lien.getNoeudA().equals(idNoeud)){
+            if (recherche.lienValide(lien)) {
+                if (lien.getNoeudA().equals(idNoeud)) {
                     resultat.add(lien.getNoeudB());
-                }else {
+                } else {
                     resultat.add(lien.getNoeudA());
                 }
             }
@@ -192,13 +192,13 @@ public class Graph {
     }
 
     // type de liens par Noeud
-    public HashSet<String> typeLienParNomNoeud(String nomNoeud){
+    public HashSet<String> typeLienParNomNoeud(String nomNoeud) {
         HashSet<String> typesLiens = new HashSet<String>();
         String tmp;
         Lien lien;
         HashSet<Lien> ensLiens = getLiensByNomNoeud(nomNoeud);
         Iterator liensIterator = ensLiens.iterator();
-        while (liensIterator.hasNext()){
+        while (liensIterator.hasNext()) {
             lien = (Lien) liensIterator.next();
             tmp = lien.getType();
             typesLiens.add(tmp);

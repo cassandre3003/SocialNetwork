@@ -13,7 +13,7 @@ public class Main extends Application {
     //methodes
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root =null;
+        Parent root = null;
         root = FXMLLoader.load(getClass().getResource("/Graphe.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
