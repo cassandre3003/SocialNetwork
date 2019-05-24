@@ -1,7 +1,7 @@
-Claude--teacher[since=2016]-->Pierre
+Claude--teacher[since=2016]-->Joseph
 Claude--teacher[since=2016]-->Laure
-Claude--teacher[since=2016]-->Karima
 Claude--teacher[since=2016]-->Ahmed
+Claude--teacher[since=2016]-->Nina
 Claude--teacher[since=2016]-->Cassandra
 Claude--teacher[since=2016]-->Patricia
 Karima--likes[since=2018]-->Elasticsearch
@@ -13,9 +13,8 @@ Laureen--employee[role=teacher;hired=Apr-2000]-->IDMC
 Claude--employee[role=teacher;hired=Feb-2005]-->IDMC
 Edouard--employee[role=teacher;hired=Oct-2000]-->IDMC
 Joseph--teacher[since=2017]-->Pierre
-Joseph--teacher[since=2015]-->Karima
-Joseph--teacher[since=2017]-->Suzanne
-Joseph--teacher[since=2017]-->Pierre
+Joseph--teacher[since=2015]-->Ahmed
+Joseph--teacher[since=2017]-->Edouard
 Joseph--teacher[since=2015]-->Selma
 Joseph--teacher[since=2015]-->Elisabeth
 Elisabeth--likes[since=2018]-->MongoDB
@@ -48,4 +47,4 @@ Edouard--teacher[since=2015]-->Elisabeth
 Edouard--teacher[since=2014]-->Karima
 Edouard--teacher[since=2014]-->Ahmed
 Edouard--teacher[since=2013]-->Selma
-Edouard--teacher[since=2013]-->Patricia
+Edouard--teacher[since=2013]-->Gigi
