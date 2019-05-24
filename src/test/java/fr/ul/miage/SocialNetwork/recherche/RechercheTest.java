@@ -90,7 +90,7 @@ public class RechercheTest {
         recherche.setUnicite("LienGlobal");
         recherche.setAttributs(new HashSet<String>());
         recherche.getAttributs().add("since=2016");
-        recherche.setProfondeur(9);
+        recherche.setProfondeur(123);
         assertEquals(13,recherche.recherche().size());
     }
 

@@ -31,6 +31,40 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.10</version>
+                <configuration>
+                    <assembleDirectory>${project.basedir}/bin</assembleDirectory>
+                    <programs>
+                        <program>
+                            <mainClass>fr.ul.miage.SocialNetwork.interfaceApp.Main</mainClass>
+                            <id>Main</id>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRefs>project</descriptorRefs>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>dist</id>
+                        <phase> install</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
     <repositories>

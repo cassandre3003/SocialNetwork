@@ -19,13 +19,6 @@ public class Recherche {
     private String unicite;
     private HashSet<String> attributs;
 
-
-    public Recherche(String direction, String noeudID, String typeLien) {
-        this.direction = direction;
-        this.noeudID = noeudID;
-        this.typeLien= typeLien;
-    }
-
     public Recherche(String parcours, String noeudID, String typeLien, String direction, int profondeur, String unicite, HashSet<String> attributs) {
         this.parcours = parcours;
         this.noeudID = noeudID;
@@ -34,6 +27,12 @@ public class Recherche {
         this.profondeur = profondeur;
         this.unicite = unicite;
         this.attributs = attributs;
+    }
+
+    public Recherche(String direction, String noeudID, String typeLien) {
+        this.direction = direction;
+        this.noeudID = noeudID;
+        this.typeLien= typeLien;
     }
 
     public Recherche() {
@@ -101,8 +100,7 @@ public class Recherche {
         Reader read = new Reader();
         Graph graph = read.creerGraph();
         if(profondeur == 0){
-            this.profondeur = Integer.MAX_VALUE;
-            System.out.println(profondeur);
+            profondeur = Integer.MAX_VALUE;
         }
         if(parcours.equals("Longueur d'abord")){
             if(unicite.equals("NoeudGlobal")){
@@ -175,6 +173,7 @@ public class Recherche {
         Stack<Noeud> pileNoeuds = new Stack();
         HashSet<String> idNoeudsVoisin = new HashSet<>();
         HashSet<Noeud> noeudsVoisin = new HashSet<>();
+        Noeud noeudVoisin;
         Lien lien;
         Noeud noeud = graph.getNoeudById(noeudID);
         noeud.setPosition(position);
@@ -187,10 +186,11 @@ public class Recherche {
             }
             idNoeudsVoisin = graph.getNoeudsVoisinsById(this,idLienMarques, noeud.getId());
             noeudsVoisin = ajoutDePositionNoeud(idNoeudsVoisin, graph, position);
-            noeudsVoisin.forEach(noeudVoisin -> {
+            Iterator noeudsIt = noeudsVoisin.iterator();
+            while(noeudsIt.hasNext()){
+                noeudVoisin = (Noeud)noeudsIt.next();
                 pileNoeuds.push(noeudVoisin);
-
-            });
+            }
         }
         return resultat;
     }
@@ -254,6 +254,7 @@ public class Recherche {
         }
         return resultat;
     }
+
 
     public boolean lienValide(Lien lien){
         if (!(attributs == null)){
