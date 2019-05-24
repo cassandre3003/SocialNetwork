@@ -2,7 +2,6 @@ package fr.ul.miage.SocialNetwork.interfaceApp;
 
 import fr.ul.miage.SocialNetwork.file.Reader;
 import fr.ul.miage.SocialNetwork.graph.Graph;
-import fr.ul.miage.SocialNetwork.graph.Lien;
 import fr.ul.miage.SocialNetwork.recherche.Recherche;
 import javafx.beans.value.ChangeListener;
 import javafx.embed.swing.SwingNode;
@@ -49,6 +48,8 @@ public class ControllerGraphe implements Initializable {
     private BorderPane pane;
     @FXML
     private ListView attributs;
+    @FXML
+    private  Button button;
 
 
     @FXML
@@ -97,14 +98,15 @@ public class ControllerGraphe implements Initializable {
                 lien.setValue(lien.getItems().get(0));
             });
 
-            HashSet<String> temp = new HashSet<String>() ;
-            lien.valueProperty().addListener((ChangeListener<String>) (args0,oldvalue,newvalue) -> {
-                attributs.getItems().clear();
 
-                for (String liaison : graphe.getAttributsByIdNoeudEtTypeLien(lien.getSelectionModel().getSelectedItem(),listeDeDepart.getSelectionModel().getSelectedItem())) {
+
+
+            /*lien.valueProperty().addListener((ChangeListener<String>) (args0,oldvalue,newvalue) -> {
+                attributs.getItems().clear();
+                for (String liaison : graphe.getAttributsByIdNoeudEtTypeLien(lien.getSelectionModel().getSelectedItem().toString(),graphe.getNoeudByNom(listeDeDepart.getSelectionModel().getSelectedItem().toString()).getId())) {
                     attributs.getItems().add(liaison);
                 }
-            });
+            });*/
 
 
         } catch (FileNotFoundException e) {
@@ -113,6 +115,20 @@ public class ControllerGraphe implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    public void ok (ActionEvent e) throws IOException {
+        Reader reader = new Reader();
+        Graph graphe = reader.creerGraph();
+        attributs.getItems().clear();
+
+        attributs.getItems().clear();
+        for (String liaison : graphe.getAttributsByIdNoeudEtTypeLien(lien.getSelectionModel().getSelectedItem().toString(),graphe.getNoeudByNom(listeDeDepart.getSelectionModel().getSelectedItem().toString()).getId())) {
+            attributs.getItems().add(liaison);
+        }
+    }
+
 
     @FXML
     public void search(ActionEvent e) throws IOException {
@@ -132,7 +148,8 @@ public class ControllerGraphe implements Initializable {
             String profondeurRecupere = level.getSelectionModel().getSelectedItem().toString();
             String uniciteRecupere = unicite.getSelectionModel().getSelectedItem().toString();
             String parcoursRecupere = parcours.getSelectionModel().getSelectedItem().toString();
-            HashSet<String> attribRecupere = (HashSet<String>) attributs.getSelectionModel().getSelectedItems();
+            HashSet<String> attribRecupere = new HashSet<>();
+            attribRecupere.addAll(attributs.getSelectionModel().getSelectedItems());
 
 
             //on convertit les informations selectionnees afin de pouvoir faire les traitements
@@ -150,8 +167,10 @@ public class ControllerGraphe implements Initializable {
             if (dirRecupere.equals("B -> Noeud")){
                 dirRecupere = "BA";
             }
+
+
             //on initialise la recherche afin de la lancer
-            Recherche recherche = new Recherche(parcoursRecupere, profondeur, uniciteRecupere, dirRecupere, graphe.getNoeudByNom(nomRecupere).getId(), lienRecupere, attribRecupere);
+            Recherche recherche = new Recherche(parcoursRecupere,graphe.getNoeudByNom(nomRecupere).getId(), lienRecupere,  dirRecupere,profondeur, uniciteRecupere , attribRecupere);
             HashSet<String> res = recherche.recherche();
 
             //on regarde les resultats obtenus par la recherche

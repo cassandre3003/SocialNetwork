@@ -61,7 +61,7 @@ public class RechercheTest {
         recherche.setParcours("Largeur d'abord");
         recherche.setUnicite("NoeudGlobal");
         recherche.setNoeudID(graphique.getNoeudByNom("Claude").getId());
-        System.out.println(recherche.recherche().toString());
+        assertEquals(10,recherche.recherche().size());
     }
 
     @Test
@@ -90,8 +90,8 @@ public class RechercheTest {
         recherche.setUnicite("LienGlobal");
         recherche.setAttributs(new HashSet<String>());
         recherche.getAttributs().add("since=2016");
-        recherche.setProfondeur(1);
-        assertEquals(6,recherche.recherche().size());
+        recherche.setProfondeur(9);
+        assertEquals(13,recherche.recherche().size());
     }
 
     @Test
