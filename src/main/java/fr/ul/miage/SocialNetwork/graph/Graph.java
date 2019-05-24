@@ -43,10 +43,9 @@ public class Graph {
     }
 
     public Noeud getNoeudByNom(String nom){
-        Noeud tmp;
         for (Noeud noeud : noeuds) {
             if (noeud.getNom().equals(nom)) {
-                continue;
+                return noeud;
             }
         }
         return null;
