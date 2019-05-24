@@ -82,6 +82,7 @@ public class Graph {
                 });
             }
         });
+        return resultat;
     }
 
     // liens par Noeud
